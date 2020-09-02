@@ -1,0 +1,27 @@
+\renewcommand{\arraystretch}{1.1}
+\begin{table}[hp]
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{ll|rr|rrrrrr}
+\toprule
+&&\multicolumn{2}{c}{Level} & \multicolumn{6}{c}{Power} \\
+Sample size & $\downarrow$ Test $\mid$ DGP $\rightarrow$ & 1$^{\prime\prime}$ & 2$^{\prime\prime}$ & 5$^{\prime\prime}$ & 6$^{\prime\prime}$ & 7$^{\prime\prime}$ & 8$^{\prime\prime}$ & 9$^{\prime\prime}$ & 10$^{\prime\prime}$ \\
+\midrule
+&&&&&&&&& \\ 
+\rowcolor{Gray}$n = 100$ & LGPC, $\scriptstyle c = 1.75$&\texttt{0.068}&\texttt{0.049}&\texttt{\underline{0.911}}&\texttt{\underline{0.567}}&\texttt{\underline{0.295}}&\texttt{\underline{0.266}}&\texttt{\underline{0.380}}&\texttt{\underline{0.521}}\\
+&&&&&&&&& \\ 
+$n = 200$ & CHF&\texttt{0.028}&\texttt{0.022}&\texttt{0.964}&\texttt{0.952}&\texttt{0.668}&\texttt{\underline{0.852}}&\texttt{\underline{0.552}}&\texttt{\underline{0.856}}\\
+&CM&\texttt{0.050}&\texttt{0.028}&\texttt{0.756}&\texttt{0.484}&\texttt{0.192}&\texttt{0.788}&\texttt{0.260}&\texttt{0.448}\\
+&KS&\texttt{0.048}&\texttt{0.032}&\texttt{0.500}&\texttt{0.380}&\texttt{0.096}&\texttt{0.660}&\texttt{0.212}&\texttt{0.372}\\
+\rowcolor{Gray}&LGPC, $\scriptstyle c = 1.75$&\texttt{0.062}&\texttt{0.050}&\texttt{0.993}&\texttt{0.776}&\texttt{0.388}&\texttt{0.363}&\texttt{0.545}&\texttt{0.794}\\
+&SEL&\texttt{0.056}&\texttt{0.026}&\texttt{\underline{0.996}}&\texttt{\underline{0.980}}&\texttt{\underline{0.860}}&\texttt{0.816}&\texttt{0.344}&\texttt{0.680}\\
+&&&&&&&&& \\ 
+$n = 400$ & CHF&\texttt{0.032}&\texttt{0.034}&\texttt{\underline{1.000}}&\texttt{0.972}&\texttt{0.928}&\texttt{0.884}&\texttt{\underline{0.792}}&\texttt{\underline{0.972}}\\
+&CM&\texttt{0.050}&\texttt{0.032}&\texttt{0.992}&\texttt{0.728}&\texttt{0.400}&\texttt{\underline{0.912}}&\texttt{0.390}&\texttt{0.620}\\
+&KS&\texttt{0.044}&\texttt{0.036}&\texttt{0.840}&\texttt{0.552}&\texttt{0.220}&\texttt{0.880}&\texttt{0.306}&\texttt{0.568}\\
+\rowcolor{Gray}&LGPC, $\scriptstyle c = 1.75$&\texttt{0.048}&\texttt{0.030}&\texttt{\underline{1.000}}&\texttt{0.938}&\texttt{0.519}&\texttt{0.538}&\texttt{0.740}&\texttt{0.956}\\
+&SEL&\texttt{0.056}&\texttt{0.038}&\texttt{\underline{1.000}}&\texttt{\underline{1.000}}&\texttt{\underline{1.000}}&\texttt{0.888}&\texttt{0.616}&\texttt{0.876}\\
+\bottomrule
+\end{tabular}}
+\caption*{Table 5$^*$: Level and power, 5-dimensional data}
+\label{tab:dim5}
+\end{table}

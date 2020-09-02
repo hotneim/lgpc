@@ -1,0 +1,38 @@
+\renewcommand{\arraystretch}{1.2}
+\begin{table}[h]
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l|rrrr|rrrrrr}
+\toprule
+&\multicolumn{4}{c}{Level} & \multicolumn{6}{c}{Power} \\
+$\downarrow$ Test $\mid$ DGP $\rightarrow$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+\midrule
+BRT, $\scriptstyle c = 1$&\texttt{0.037}&\texttt{0.025}&\texttt{0.028}&\texttt{0.032}&\texttt{0.995}&\texttt{0.996}&\texttt{\underline{0.979}}&\texttt{0.989}&\texttt{0.904}&\texttt{0.785}\\
+BRT, $\scriptstyle c = 1.5$&\texttt{0.044}&\texttt{0.025}&\texttt{0.025}&\texttt{0.037}&\texttt{0.971}&\texttt{0.993}&\texttt{0.931}&\texttt{0.997}&\texttt{0.931}&\texttt{0.759}\\
+BRT, $\scriptstyle c = 2$&\texttt{0.064}&\texttt{0.023}&\texttt{0.023}&\texttt{0.052}&\texttt{0.943}&\texttt{0.979}&\texttt{0.873}&\texttt{0.997}&\texttt{0.912}&\texttt{0.728}\\
+BT, $\scriptstyle c_1 = 1, c_2 = 1$&\texttt{0.047}&\texttt{0.051}&\texttt{0.041}&\texttt{0.053}&\texttt{0.996}&\texttt{0.812}&\texttt{0.852}&\texttt{\underline{1.000}}&\texttt{0.936}&\texttt{-}\\
+BT, $\scriptstyle c_1 = 0.85, c_2 = 0.7$&\texttt{0.048}&\texttt{0.044}&\texttt{0.064}&\texttt{0.056}&\texttt{0.988}&\texttt{0.728}&\texttt{0.792}&\texttt{\underline{1.000}}&\texttt{0.908}&\texttt{-}\\
+BT, $\scriptstyle c_1 = 0.75, c_2 = 0.6$&\texttt{0.036}&\texttt{0.048}&\texttt{0.052}&\texttt{0.052}&\texttt{0.976}&\texttt{0.719}&\texttt{0.808}&\texttt{\underline{1.000}}&\texttt{0.896}&\texttt{-}\\
+CHF&\texttt{0.046}&\texttt{0.042}&\texttt{-}&\texttt{-}&\texttt{0.976}&\texttt{0.988}&\texttt{0.820}&\texttt{0.952}&\texttt{0.944}&\texttt{0.864}\\
+CM&\texttt{0.044}&\texttt{0.056}&\texttt{0.060}&\texttt{0.048}&\texttt{0.992}&\texttt{0.740}&\texttt{0.788}&\texttt{0.680}&\texttt{0.476}&\texttt{0.360}\\
+HEL, $\scriptstyle c = 1$&\texttt{0.064}&\texttt{0.052}&\texttt{0.080}&\texttt{0.080}&\texttt{0.900}&\texttt{0.960}&\texttt{0.596}&\texttt{0.992}&\texttt{0.968}&\texttt{0.880}\\
+HEL, $\scriptstyle c = 1.5$&\texttt{0.064}&\texttt{0.056}&\texttt{0.048}&\texttt{0.036}&\texttt{0.980}&\texttt{\underline{1.000}}&\texttt{0.808}&\texttt{0.992}&\texttt{0.972}&\texttt{0.972}\\
+HEL, $\scriptstyle c = 2$&\texttt{0.044}&\texttt{0.060}&\texttt{0.056}&\texttt{0.048}&\texttt{\underline{1.000}}&\texttt{\underline{1.000}}&\texttt{0.864}&\texttt{\underline{1.000}}&\texttt{\underline{1.000}}&\texttt{\underline{0.996}}\\
+KS&\texttt{0.068}&\texttt{0.053}&\texttt{0.048}&\texttt{0.084}&\texttt{0.952}&\texttt{0.552}&\texttt{0.660}&\texttt{0.532}&\texttt{0.336}&\texttt{0.284}\\
+\rowcolor{Gray}LGPC, $\scriptstyle c = 1.0$&\texttt{0.039}&\texttt{0.052}&\texttt{0.054}&\texttt{0.054}&\texttt{0.995}&\texttt{0.948}&\texttt{0.818}&\texttt{\underline{1.000}}&\texttt{\underline{1.000}}&\texttt{0.985}\\
+\rowcolor{Gray}LGPC, $\scriptstyle c = 1.4$&\texttt{0.042}&\texttt{0.057}&\texttt{0.058}&\texttt{0.042}&\texttt{\underline{1.000}}&\texttt{0.993}&\texttt{0.956}&\texttt{\underline{1.000}}&\texttt{\underline{1.000}}&\texttt{0.958}\\
+LIN&\texttt{0.043}&\texttt{0.053}&\texttt{0.042}&\texttt{0.050}&\texttt{\underline{1.000}}&\texttt{0.354}&\texttt{0.250}&\texttt{0.113}&\texttt{0.172}&\texttt{0.143}\\
+MCC, $\scriptstyle c = 1$&\texttt{0.049}&\texttt{0.051}&\texttt{0.057}&\texttt{0.054}&\texttt{0.982}&\texttt{0.983}&\texttt{0.831}&\texttt{\underline{1.000}}&\texttt{0.947}&\texttt{0.679}\\
+MCC, $\scriptstyle c = 1.5$&\texttt{0.046}&\texttt{0.048}&\texttt{0.049}&\texttt{0.053}&\texttt{0.995}&\texttt{0.989}&\texttt{0.872}&\texttt{\underline{1.000}}&\texttt{0.968}&\texttt{0.738}\\
+MCC, $\scriptstyle c = 2$&\texttt{0.045}&\texttt{0.045}&\texttt{0.047}&\texttt{0.057}&\texttt{0.997}&\texttt{0.995}&\texttt{0.735}&\texttt{\underline{1.000}}&\texttt{0.971}&\texttt{0.745}\\
+SCM&\texttt{0.048}&\texttt{0.060}&\texttt{0.064}&\texttt{0.068}&\texttt{0.980}&\texttt{0.648}&\texttt{0.620}&\texttt{0.720}&\texttt{0.352}&\texttt{0.280}\\
+SEL&\texttt{0.052}&\texttt{0.033}&\texttt{-}&\texttt{-}&\texttt{0.992}&\texttt{\underline{1.000}}&\texttt{0.972}&\texttt{\underline{1.000}}&\texttt{0.884}&\texttt{0.864}\\
+SKS&\texttt{0.056}&\texttt{0.028}&\texttt{0.064}&\texttt{0.072}&\texttt{0.964}&\texttt{0.324}&\texttt{0.512}&\texttt{0.552}&\texttt{0.148}&\texttt{0.136}\\
+\bottomrule
+\end{tabular}}
+\caption*{Table 3$^*$: Level and power of conditional independence tests, $n = 200$}
+\label{tab:n200}
+\end{table}
+
+
+
+

@@ -1,0 +1,31 @@
+\renewcommand{\arraystretch}{1.1}
+\begin{table}[hp]
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{ll|rr|rrrrrr}
+\toprule
+&&\multicolumn{2}{c}{Level} & \multicolumn{6}{c}{Power} \\
+Sample size & $\downarrow$ Test $\mid$ DGP $\rightarrow$ & 1$^{\prime}$ & 2$^{\prime}$ & 5$^{\prime}$ & 6$^{\prime}$ & 7$^{\prime}$ & 8$^{\prime}$ & 9$^{\prime}$ & 10$^{\prime}$ \\
+\midrule
+&&&&&&&&& \\ 
+$n = 100$ & CHF&\texttt{0.028}&\texttt{0.042}&\texttt{0.720}&\texttt{0.704}&\texttt{0.412}&\texttt{0.564}&\texttt{\underline{0.460}}&\texttt{\underline{0.556}}\\
+&CM&\texttt{0.028}&\texttt{0.016}&\texttt{0.656}&\texttt{0.360}&\texttt{0.108}&\texttt{0.512}&\texttt{0.164}&\texttt{0.208}\\
+&KS&\texttt{0.040}&\texttt{0.020}&\texttt{0.400}&\texttt{0.284}&\texttt{0.056}&\texttt{0.380}&\texttt{0.124}&\texttt{0.176}\\
+\rowcolor{Gray}&LGPC, $\scriptstyle c = 1.75$&\texttt{0.048}&\texttt{0.033}&\texttt{\underline{0.951}}&\texttt{0.668}&\texttt{0.294}&\texttt{0.517}&\texttt{0.406}&\texttt{0.538}\\
+&SEL&\texttt{0.052}&\texttt{0.040}&\texttt{0.844}&\texttt{\underline{0.828}}&\texttt{\underline{0.620}}&\texttt{\underline{0.568}}&\texttt{0.440}&\texttt{0.528}\\
+&&&&&&&&& \\ 
+$n = 200$ & CHF&\texttt{0.030}&\texttt{0.040}&\texttt{0.948}&\texttt{0.944}&\texttt{0.748}&\texttt{0.828}&\texttt{\underline{0.724}}&\texttt{\underline{0.860}}\\
+&CM&\texttt{0.050}&\texttt{0.032}&\texttt{0.940}&\texttt{0.588}&\texttt{0.304}&\texttt{0.792}&\texttt{0.304}&\texttt{0.364}\\
+&KS&\texttt{0.046}&\texttt{0.024}&\texttt{0.776}&\texttt{0.432}&\texttt{0.168}&\texttt{0.696}&\texttt{0.216}&\texttt{0.284}\\
+\rowcolor{Gray}&LGPC, $\scriptstyle c = 1.75$&\texttt{0.059}&\texttt{0.035}&\texttt{\underline{0.998}}&\texttt{0.923}&\texttt{0.415}&\texttt{0.769}&\texttt{0.698}&\texttt{0.833}\\
+&SEL&\texttt{0.058}&\texttt{0.026}&\texttt{0.972}&\texttt{\underline{0.988}}&\texttt{\underline{0.932}}&\texttt{\underline{0.832}}&\texttt{0.684}&\texttt{0.832}\\
+&&&&&&&&& \\ 
+$n = 400$ & CHF&\texttt{0.040}&\texttt{0.036}&\texttt{\underline{1.000}}&\texttt{0.984}&\texttt{0.972}&\texttt{0.996}&\texttt{0.920}&\texttt{\underline{0.984}}\\
+&CM&\texttt{0.056}&\texttt{0.024}&\texttt{\underline{1.000}}&\texttt{0.884}&\texttt{0.552}&\texttt{0.980}&\texttt{0.556}&\texttt{0.668}\\
+&KS&\texttt{0.060}&\texttt{0.024}&\texttt{\underline{1.000}}&\texttt{0.732}&\texttt{0.324}&\texttt{0.952}&\texttt{0.384}&\texttt{0.524}\\
+\rowcolor{Gray}&LGPC, $\scriptstyle c = 1.75$&\texttt{0.048}&\texttt{0.018}&\texttt{\underline{1.000}}&\texttt{0.996}&\texttt{0.584}&\texttt{0.960}&\texttt{\underline{0.928}}&\texttt{0.978}\\
+&SEL&\texttt{0.040}&\texttt{0.030}&\texttt{\underline{1.000}}&\texttt{\underline{1.000}}&\texttt{\underline{1.000}}&\texttt{\underline{1.000}}&\texttt{0.836}&\texttt{0.884}\\
+\bottomrule
+\end{tabular}}
+\caption*{Table 4$^*$: Level and power, 4-dimensional data}
+\label{tab:dim4}
+\end{table}
