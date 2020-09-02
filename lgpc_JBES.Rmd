@@ -43,7 +43,7 @@ Let $\X = (X_1, \ldots, X_p)$ be a random vector. Denote by $(\X_1,\X_2,\X_3)$ a
 \end{equation}
 where $\fSigma_{ij}$ is the covariance matrices of $(\X_i, \X_j)$, $i,j = 1,2,3$. There are two main concepts of correlation when $\Xtwo = \X_3$ is given, the *partial* and the *conditional* correlation, and they coincide in several joint distributions, among them the Gaussian. See e.g. @baba2004partial for details. We will use the partial correlation as a starting point when defining the LGPC. The partial variance-covariance matrix of $\Xone = (\X_1, \X_2)$ given $\Xtwo = \X_3$ is 
 \begin{equation}
-\fSigma_{12|3} = \fSigma^{11} - \fSigma^{12}\left(\fSigma^{-1}\right)^{22}\fSigma^{21},
+\fSigma_{12|3} = \fSigma^{11} - \fSigma^{12}\left(\fSigma^{22}\right)^{-1}\fSigma^{21},
 (\#eq:matrixpartial)
 \end{equation} 
 where
@@ -72,12 +72,12 @@ Before we get that far, however, we will introduce a useful transformation techn
 \Z = \Big(\Phi^{-1}\left(F_{1}(X_1)\right), \Phi^{-1}\left(F_{2}(X_2)\right), \ldots, \Phi^{-1}\left(F_{p}(X_p)\right)\Big).
 (\#eq:trans)
 \end{equation}
-The transformation enables us to simplify the local Gaussian representation \@ref(eq:localgaussian) by writing the density $f_{\Z}$ of $\Z$ as 
+The transformation enables us to simplify the local Gaussian approximation \@ref(eq:localgaussian) by writing the density $f_{\Z}$ of $\Z$  at the point $\fv = \z$ as 
 \begin{equation}
 f_{\Z}(\z) = \psi(\z, R(\z)) = \frac{1}{|2\pi\R(\z)|^{1/2}}\exp\left\{-\frac{1}{2}\z^T\R^{-1}(\z)\z\right\},
 (\#eq:lgdeapprox)
 \end{equation}  
-where, as in Otneim and Tjøstheim [-@otneim2017locally; -@otneim2017conditional] in a simplified representation, we have fixed local means and standard deviations $\mu_j(\z) = 0$ and $\sigma_j^2(\z) = 1$, $j = 1,\ldots,p$, and where $\R(\z) = \{\rho_{jk}(\z)\}$ is the *local correlation matrix*.
+where, as in Otneim and Tjøstheim [-@otneim2017locally; -@otneim2017conditional] in a further simplified representation, we have fixed local means and standard deviations $\mu_j(\z) = 0$ and $\sigma_j^2(\z) = 1$, $j = 1,\ldots,p$, and where $\R(\z) = \{\rho_{jk}(\z)\}$ is the *local correlation matrix*.
 
 In practice, we do not know $F_{j}$, but we can instead use the empirical distribution function 
 $$F_{j,n}(x) = \frac{1}{n-1}\sum_{i=1}^n 1\left(X_{ji} \leq x\right),$$
@@ -123,7 +123,7 @@ Property 1 is trivially true if $\R(\z)$ is a valid correlation matrix. By remov
 
 To see that conditional independence between $X_1$ and $X_2$ given $\X_3$ is equivalent to $\alpha(\z) \equiv 0$, or equivalently $\alpha(\x) \equiv 0$, we need to follow a few simple steps that would also work in the global Gaussian case. Working on the standard normal $z$-scale and assuming that $(z_1, z_2, \z_3)$ has density function $f_{\Z}(\z)$ as given by \@ref(eq:lgdeapprox), it follows from @otneim2017conditional that we can calculate conditional distributions in the same way as in the global Gaussian case. For example, the conditional density of $Z_1|\Z_3$ at the point $z_1$ is given by
 
-$$f_{z_1|\z_3}(z_1) = \frac{1}{|2\pi\sigma_{1|3}(z_1)|^{1/2}}\times\exp \left\{-\frac{1}{2}\left(\frac{z_1 - \mu_{1|3}(z_1)}{\sigma_{1|3}(z_1)}\right)^2\right\},$$
+$$f_{z_1|\z_3}(z_1|\z_3) = \frac{1}{|2\pi\sigma_{1|3}(z_1)|^{1/2}}\times\exp \left\{-\frac{1}{2}\left(\frac{z_1 - \mu_{1|3}(z_1)}{\sigma_{1|3}(z_1)}\right)^2\right\},$$
 where 
 
 \begin{equation}
@@ -198,7 +198,7 @@ containing three parameter functions that must be estimated from data. Note that
 \hR(\z) = \arg\max_{\R} n^{-1} \sum_{t=1}^nK_{\hh}(\hZ_t - \z)\log\psi(\hZ_t, \R) - \int K_{\hh}(\y - \z)\psi(\y, \R)\,\textrm{d}\y
 (\#eq:locallik3)
 \end{equation}
-in each point $\z$, where $K_{\hh}(\x) = |\hh|^{-1/2}K(\hh^{-1/2}\x)$, $K$ is a non-negative and radially symmetric kernel function that satisfies $\int K(\x)\,\textrm{d}\x=1$, and $\hh$ is a diagonal $3\times3$ matrix of bandwidths that serve as smoothing parameters. The estimate $\hf_{\Z}(\z) = \psi(\z, \hR(\z))$ aims at minimizing a locally weighted Kullback-Leibler distance to $f_{\Z}(\z)$, and we refer to @hjort1996locally and @tjostheim2013local for much more details about this construction, and to Section \@ref(chap:asymptotic) for the relevant asymptotic estimation theory.
+in each point $\z$, where $K_{\hh}(\x) = |\hh|^{-1}K(\hh^{-1}\x)$, $K$ is a non-negative and radially symmetric kernel function that satisfies $\int K(\x)\,\textrm{d}\x=1$, and $\hh$ is a diagonal $3\times3$ matrix of bandwidths that serve as smoothing parameters. The estimate $\hf_{\Z}(\z) = \psi(\z, \hR(\z))$ aims at minimizing a locally weighted Kullback-Leibler distance to $f_{\Z}(\z)$, and we refer to @hjort1996locally and @tjostheim2013local for much more details about this construction, and to Section \@ref(chap:asymptotic) for the relevant asymptotic estimation theory.
 
 Finally, we obtain the estimated LGPC $\halpha(\z)$ by plugging the estimated local correlations $\hR(\z)$ into equations \@ref(eq:localpartialcov) and \@ref(eq:estimate) and a corresponding value of $\halpha(\x)$ at the point $\x = \widehat F^{-1}(\Phi(\z))$ by inserting $\z = \Phi^{-1}({\widehat F(\x)})$. 
 
@@ -214,14 +214,14 @@ which reduces the estimation of the $p$-variate correlation functions $\rho_{jk}
 
 We transform the observations to the $z$-scale as in \@ref(eq:pseudoobservations), but now estimate the individual components in $\R(\z)$ one by one, taking only into consideration the *pair* of variables in question: 
 \begin{equation}
-\hrho_{jk}(z_j, z_k) = \arg\max_{\rho_{jk}} n^{-1} \sum_{t=1}^nK_{\hh}(\hZ_t - \z)\log(\hZ_t, \rho_{jk}) - \int K_{\hh}(\y - \z)\psi(\y, \rho_{jk})\,\textrm{d}\y, 
+\hrho_{jk}(z_j, z_k) = \arg\max_{\rho_{jk}} n^{-1} \sum_{t=1}^nK_{\hh}(\hZ_t - \z)\log\psi(\hZ_t, \rho_{jk}) - \int K_{\hh}(\y - \z)\psi(\y, \rho_{jk})\,\textrm{d}\y, 
 (\#eq:locallik2)
 \end{equation}
 where all running variables and samples are bivariate subsets corresponding to the indices $(j,k)$, $\psi(\cdot, \rho)$ is the bivariate version of \@ref(eq:lgdeapprox), and $\hh$ now is a $2\times2$ diagonal matrix of bandwidths. After estimating all local correlations in this way, we proceed to calculate the LGPC using equations \@ref(eq:localpartialcov) and \@ref(eq:estimate) as above.
 
 ## Asymptotic theory {#chap:asymptotic}
 
-Equations \@ref(eq:matrixlocalpartial), \@ref(eq:definition) and their empirical counterparts \@ref(eq:localpartialcov) and \@ref(eq:estimate) demonstrate clearly that the LGPC is nothing more than a deterministic function of the local correlation matrix, in the same way as the ordinary partial correlation is a function of the ordinary correlation matrix. The asymptotic behavior of $\halpha(\z)$ can thus be derived directly from the asymptotic behavior of $\hR(\z)$, which, for the most part, has been established in earlier works, see e.g. @tjostheim2013local and @otneim2017locally. Some key results follow below, and we refer to the supplementary material, Sections B--D for proofs of the asymptotic distributional results in this subsection, and to Section A.3 for a discussion of more general situations and for a result on consistency.
+Equations \@ref(eq:matrixlocalpartial), \@ref(eq:definition) and their empirical counterparts \@ref(eq:localpartialcov) and \@ref(eq:estimate) demonstrate clearly that the LGPC is nothing more than a deterministic function of the local correlation matrix, in the same way as the ordinary partial correlation is a function of the ordinary correlation matrix. The asymptotic behavior of $\halpha(\z)$ can thus be derived directly from the asymptotic behavior of $\hR(\z)$, which, for the most part, has been established in earlier works, see e.g. @tjostheim2013local and Otneim and Tjøstheim [-@otneim2017locally; -@otneim2017conditional]. Some key results follow below, and we refer to the supplementary material, Sections B--D for proofs of the asymptotic distributional results in this subsection, and to Section A.3 for a discussion of more general situations and for a result on consistency.
 
 We start by assuming that the marginal distribution functions $F_1, \ldots, F_p$ are known, and then state two results on the joint asymptotic normality of the estimated local correlation matrix $\hR(\z)$ under a mixing condition. We will then apply the delta method in order to derive the limiting distribution of the estimated LGPC, and finally show that we may replace $F_1,\ldots,F_p$ with their empirical counterparts $\hF_1,\ldots,\hF_p$ without changing these asymptotic results.
 
@@ -231,7 +231,7 @@ Consider first the full trivariate fit $\hR(\z)$ described in Section \@ref(chap
 \nabla L_n(\R_{\hh}, \z) \rightarrow \int K_{\hh}(\y - \z)\fu(\y, \R_{\hh}(\z))\{f_{\Z}(\y) - \psi(\y, \R_{\hh})\}\,\textrm{d}\y = 0,
 (\#eq:popfixedh3)
 \end{equation}
-where $f_{\Z}(\z) = f_{Z_1,Z_2,Z_3}(z_1,z_2,z_3)$ is the density function of $\Z$, and $\fu(\cdot, \rho_{\hh})$ is the column vector of local score functions $\nabla \log\psi(\cdot, \rho_{\hh})$, and where the gradient is taken with respect to the parameters $\rho_{12}(\z)$, $\rho_{13}(\z)$ and $\rho_{23}(\z)$. Denote by $\frho = \frho(\z) = \{\rho_{12}(\z), \rho_{13}(\z), \rho_{23}(\z)\}$ the vector of local correlations. The joint limiting distribution of $\hfrho$ (for convenience only stated on the \(z\)-scale below) is given by the following result as $n \rightarrow \infty$ and $\hh \rightarrow \bm{0}$:
+where $f_{\Z}(\z) = f_{Z_1,Z_2,Z_3}(z_1,z_2,z_3)$ is the density function of $\Z$ (at the point $\z$), and $\fu(\cdot, \rho_{\hh})$ is the column vector of local score functions $\nabla \log\psi(\cdot, \rho_{\hh})$, and where the gradient is taken with respect to the parameters $\rho_{12}(\z)$, $\rho_{13}(\z)$ and $\rho_{23}(\z)$. Denote by $\frho = \frho(\z) = \{\rho_{12}(\z), \rho_{13}(\z), \rho_{23}(\z)\}$ the vector of local correlations. The joint limiting distribution of $\hfrho$ (for convenience only stated on the \(z\)-scale below) is given by the following result as $n \rightarrow \infty$ and $\hh \rightarrow \bm{0}$:
 
 ```{theorem, loccor3}
 Let $\{\Z_t\}_{t=1}^n$ be observations on the marginally standard normally distributed random vector $\Z$ having joint density $f_{\Z}(\z)$. Assume that the following conditions hold:
@@ -240,11 +240,11 @@ Let $\{\Z_t\}_{t=1}^n$ be observations on the marginally standard normally distr
 2. The process generating $\{\Z_t\}_{t=1}^n$ is $\alpha$-mixing with mixing coefficients $\alpha(m)$ satisfying $\sum_{m\geq1}m^{\lambda}\alpha(m)^{1-2/\delta} < \infty$ for some $\lambda > 1-2/\delta$ and $\delta>2$.
 3. $n\rightarrow\infty$, and each bandwidth $b = b_n$ tends to zero such that $nb^{\frac{\lambda+2-2/\delta}{\lambda + 2/\delta}} = O(n^{\epsilon_0})$ for some constant $\epsilon_0 > 0$. 
 4. In a given point $\z$, the parameter space $\Theta$ for each local correlation $\rho(\z)$ is a compact subset of $(-1,1)$.
-5. The non-negative kernel function $K(\cdot)$ sasisfies $\sup_{\z}K(\z) < \infty$, $\int K(\y)\,\textrm{d}\y < \infty$, $\partial/\partial z_iK(\z) <\infty$, and $\lim_{z_i \rightarrow \infty}|z_iK(\z)| = 0$ for $i = 1,2,3$.
+5. The non-negative kernel function $K(\cdot)$ satisfies $\sup_{\z}K(\z) < \infty$, $\int K(\y)\,\textrm{d}\y < \infty$, $\partial/\partial z_iK(\z) <\infty$, and $\lim_{z_i \rightarrow \infty}|z_iK(\z)| = 0$ for $i = 1,2,3$.
 
 Then, by writing $b_{n1} = b_{n2} = b_{n3} = b \rightarrow 0$ assuming they all converge to zero at the same rate, 
 \begin{equation}
-\sqrt{nb^5}\Jb\Mb^{-1/2}\left(\hfrho_n - \frho_0\right) \stackrel{d}{\rightarrow} \mathcal{N}(\bm{0}, \bm{I}),
+\sqrt{nb^5}\Mb^{-1/2}\Jb\left(\hfrho_n - \frho_0\right) \stackrel{d}{\rightarrow} \mathcal{N}(\bm{0}, \bm{I}),
 (\#eq:an3)
 \end{equation}
 where $\bm{I}$ is the $3\times3$ identity matrix,
@@ -259,7 +259,7 @@ and
 \end{align*}
 ```
 
-Theorem \@ref(thm:loccor3) and its assumptions above are variations of the assumptions and the results presented by @hjort1996locally, and in particular Theorem 3 by @tjostheim2013local. The analysis of the asymptotic behavior of $\Jb$ and $\Mb$ in the latter reference reveals that the local parameter estimates converge more slowly than, for example, the trivariate kernel density estimator (that converges as $1/(nb^3)^{1/2}$), and it is a straightforward exercise to modify their proof to suit our particular situation, which demonstrates that the three local correlations converge jointly in distribution at the rate $1/(nb^5)^{1/2}$, see Section B in the supplement for details. 
+It is shown in Section B of the Supplement that the matrices $\Jb$ and $\Mb$ are both of order $b^2$. Theorem \@ref(thm:loccor3) and its assumptions above are variations of the assumptions and the results presented by @hjort1996locally, and in particular Theorem 3 by @tjostheim2013local. The analysis of the asymptotic behavior of $\Jb$ and $\Mb$ in the latter reference reveals that the local parameter estimates converge more slowly than, for example, the trivariate kernel density estimator (that converges as $1/(nb^3)^{1/2}$), and it is a straightforward exercise to modify their proof to suit our particular situation, which demonstrates that the three local correlations converge jointly in distribution at the rate $1/(nb^5)^{1/2}$, see Section B in the supplement for details. 
 
 Furthermore, @tjostheim2013local show that an analytic expression of the leading term in the covariance matrix $\Jb^{-1}\Mb(\Jb^{-1})^T$ is not practically available. In applications we may circumvent this problem by using the bootstrap. The validity of the bootstrap can be proved using a direct adaptations of the techniques of @lacal2018estimating. It is spelled out in some detail for the pairwise case in Theorems E.1, E.2 and corollaries E.3 and E.4 in Section E of the online supplement. The same arguments can be used in the present 3-parameter case (in fact, @lacal2018estimating treat the more general five-parameter case).
 
@@ -311,7 +311,7 @@ We can now calculate the limiting distribution of the LGPC by means of the delta
 \end{equation}
 where $m$ is equal to 2 or 5, and $\fLambda$ is either equal to the leading term of $\Jb^{-1}\Mb(\Jb^{-1})^T$, or $\fOmega$ in \@ref(eq:ot2018), depending on whether we use the full trivariate locally Gaussian fit described in Section \@ref(chap:trivariate-full) or the sequentially pairwise simplification described in Section \@ref(chap:bivariate). In any case, it is only a matter of basic differentiation to work out an expression for $\nabla g(\cdot)$, and this task has been deferred to Section C of the online supplement in the case where $d_1 = d_2 = 1$.
 
-Finally, we present the limiting distribution of the LGPC between $Z_1$ and $Z_2$ given $Z_3, \ldots, Z_p$ when the components in $\Z = (Z_1, \ldots, Z_p)$ are replaced by marginally standard normal *pseudo-observations* as defined in equation \@ref(eq:pseudoobservations). The following result ensures that Theorems \@ref(thm:loccor3) and Theorem 3 by @otneim2017conditional, and thus eq. \@ref(eq:limitlgpc), still holds.
+Finally, we present the limiting distribution of the LGPC between $Z_1$ and $Z_2$ given $Z_3, \ldots, Z_p$ when the components in $\Z = (Z_1, \ldots, Z_p)$ are replaced by marginally standard normal *pseudo-observations* as defined in equation \@ref(eq:pseudoobservations). The following result ensures that Theorems \@ref(thm:loccor3) and Theorem 2 by @otneim2017conditional, and thus eq. \@ref(eq:limitlgpc), still holds.
 
 \vspace{.5cm}
 
@@ -354,7 +354,7 @@ In the next simulated example we will demonstrate an important feature of the LG
 
 Generate $X_3 = \rho \sim U(-1,1)$, and then generate $(X_1, X_2)$ from the bivariate Gaussian distribution having standard normal marginals, and correlation coefficient equal to $\rho$. We observe $\X = (X_1, X_2, \rho)$ and seek to visualize the dependence between $X_1$ and $X_2$ conditional on $\rho$.
 
-We see the results in Figure \@ref(fig:simex2-plots). In panel (a), we generate $n=1000$ simulated pairs $(X_1, X_2)$ from this model. In panel (b)-(d) we see the estimated LGPC plotted over suitable grids, and where the conditioning variable $X_3 = \rho$ has been fixed at the respective values $-0.9$, $0$ and $0.9$, and we see clearly how the dependence between $X_1$ and $X_2$ dramatically changes. It is straightforward to see that $X_1$ and $X_2$ are uncorrelated and that the ordinary partial correlation between $X_1$ and $X_2$ given $X_3$ is equal to zero. Furthermore, we note that the pairwise simplification defined in Section 3.1.2 would also not be able to measure the *conditional* relationship between $X_1$ and $X_2$ given $X_3$ in this case, as we see clearly from eq. \@ref(eq:scalardefinition), because $X_1$ and $X_2$ are both marginally independent from $X_3$. This means that the two pairwise correlations $\rho_{13}(z_1,z_3)$ and $\rho_{23}(z_2,z_3)$ are equal to zero. 
+We see the results in Figure \@ref(fig:simex2-plots). In panel (a), we display $n=1000$ simulated pairs $(X_1, X_2)$ from this model. In panel (b)-(d) we see the estimated LGPC plotted over suitable grids, and where the conditioning variable $X_3 = \rho$ has been fixed at the respective values $-0.9$, $0$ and $0.9$, and we see clearly how the dependence between $X_1$ and $X_2$ dramatically changes in an intuitively reasonable way. By a conditioning argument one can see that $X_1$ and $X_2$ are uncorrelated and that the ordinary partial correlation between $X_1$ and $X_2$ given $X_3$ is equal to zero. Furthermore, we note that the pairwise simplification defined in Section 3.1.2 would also not be able to measure the *conditional* relationship between $X_1$ and $X_2$ given $X_3$ in this case, as we see clearly from eq. \@ref(eq:scalardefinition), because $X_1$ and $X_2$ are both marginally independent from $X_3$. This means that the two pairwise correlations $\rho_{13}(z_1,z_3)$ and $\rho_{23}(z_2,z_3)$ are equal to zero. 
 
 We conclude this section by using the LGPC to analyze real data in an example regarding Granger causality between financial time series. Granger causality has been a central concept in economics and econometrics ever since its inception by @granger1969investigating. In layman's terms, the time series $\{X_t\}$ Granger causes $\{Y_t\}$ if past values of $\{X_t\}$ are helpful when predicting future values of $\{Y_t\}$. Formally, $\{X_t\}$ Granger causes $\{Y_t\}$ if [@granger1980testing]
 
@@ -440,7 +440,7 @@ T_{n,b} = \int_S h\left( \widehat \alpha_b(\z)  \right) \di F_n(\z),
 \end{equation}
 where $h(\cdot)$ is a real-valued function that is typically even and non-negative for most standard applications, and $S \subseteq \mathbb{R}^p$ is an integration area that can be altered in order to focus the test to specific portions of the sample space. Standard laws of large numbers ensure that, under regularity conditions, see Theorem F.1 of the supplement, $T_{n,b}$ converges in probability towards its population value $$T = \int_S h\left(\alpha(\z)\right) \di F(\z).$$
 
-Departures from many types of conditional independence lead to large values of $T_{n,b}$ that, if larger than a critical value, leads to the rejection of \@ref(eq:ci-test). Asymptotically, one might expect that approximate $p$-values for our test can be extracted from the limiting distribution of the test statistic $T_{n,b}$, which we derive in the online supplement Section F. The limiting asymptotic distribution of $T_{n,b}-T$ is given in Theorem F.2 for the 1-parameter general pairwise case, whereas Theorem F.3 treats the 3-coordinate (3-parameter) case with $d_1=d_2=d_3=1$. It is interesting to note from the discussion immediately following the proofs of these theorems that the convergence rate in the first case is $n^{-1/2}$, and in the second case is $\left(nb^2\right)^{-1/2}$. This means that the tests are asymptotically able to pick up alternatives approaching the null hypothesis of conditional independence at these rates. This is measured by the Pitman criterion. A discussion of the Pitman criterion for other tests of conditional independence is given on pages 11--12 immediately following Theorem 2 of @wang2017characteristic. The rate $n^{-1/2}b^{-d_3/4}$ of Wang and Hong compares favorable with other tests. The rate $n^{-1/2}$ obtained by us must be interpreted with caution, however, because it is based on a pairwise model that is more restrictive. We go into more detail regarding asymptotic power and Pitman efficiency in Section G of the online supplement. 
+Departures from conditional independence lead to large values of $T_{n,b}$ that, if larger than a critical value, leads to the rejection of \@ref(eq:ci-test). Asymptotically, one might expect that approximate $p$-values for our test can be extracted from the limiting distribution of the test statistic $T_{n,b}$, which we derive in the online supplement Section F. The limiting asymptotic distribution of $T_{n,b}-T$ is given in Theorem F.2 for the 1-parameter general pairwise case, whereas Theorem F.3 treats the 3-coordinate (3-parameter) case with $d_1=d_2=d_3=1$. It is interesting to note from the discussion immediately following the proofs of these theorems that the convergence rate in the first case is $n^{-1/2}$, and in the second case is $\left(nb^2\right)^{-1/2}$. This means that the tests are asymptotically able to pick up alternatives approaching the null hypothesis of conditional independence at these rates. This is measured by the Pitman criterion. A discussion of the Pitman criterion for other tests of conditional independence is given on pages 11--12 immediately following Theorem 2 of @wang2017characteristic. The rate $n^{-1/2}b^{-d_3/4}$ of Wang and Hong compares favorable with other tests. The rate $n^{-1/2}$ obtained by us must be interpreted with caution, however, because it is based on a pairwise model that is more restrictive. We go into more detail regarding asymptotic power and Pitman efficiency in Section G of the online supplement. 
 
 Several authors, for example @terasvirta2010modelling, have noted, however, that asymptotic analysis of nonparametric (or semiparametric) test statistics on the form \@ref(eq:teststatistic) tends to be too crude for finite sample applications. We have therefore approximated the distribution of $T_{n,b}$ using the bootstrap. The validity of the bootstrap in such contexts has been examined by @lacal2018estimating and we adapt their arguments to our situation in the online supplement, Section H.
 
@@ -448,7 +448,7 @@ In accordance with our treatment so far, let $\{Z_{1,t}, Z_{2, t}, \Z_{3, t}\}$,
 
 1. Use the local correlation estimates to estimate the conditional densities $f_{Z_1|\Z_3}(\cdot)$ and $f_{Z_2|\Z_3}(\cdot)$ by means of the method by @otneim2017conditional. In practice, in order to reduce the computational load, we evaluate $\widehat f_{Z_1|\Z_3}$ and $\widehat f_{Z_2|\Z_3}$ on a fine grid on their support, over which a continuous representation of the estimates are produced using cubic splines.
 2. Using the accept-reject algorithm, generate $B$ samples, each of size $n$, from $\widehat f_{Z_1|\Z_3}$ and $\widehat f_{Z_2|\Z_3}$, leading to $B$ replicates 
-$$Z_m^* = \Big\{\{Z_{1t}^*, Z_{2t}^*, \Z_{3t}\}_i\Big\}_m, \qquad t = 1,\ldots,n, \,\, m = 1,\ldots,B,$$
+$$Z_m^* = \Big\{\{Z_{1t}^*, Z_{2t}^*, \Z_{3t}^*\}_i\Big\}_m, \qquad t = 1,\ldots,n, \,\, m = 1,\ldots,B,$$
 of $\Z$ under the null hypothesis.
 3. Calculate $\{T_{n,b}\}_m^*$, $m = 1,\ldots,B$ for the replicated data sets and obtain the approximate $p$-value for the conditional independence test.
 
@@ -463,14 +463,14 @@ Let $(\epsilon_{1,t}, \epsilon_{2,t}, \epsilon_{3,t})$ be IID observations from 
 \hline
 1.& $(X_{1,t}, X_{2,t}, X_{3,t}) = (\epsilon_{1,t}, \epsilon_{2,t}, \epsilon_{3,t})$.\\
 2.& $X_{1,t} = 0.5X_{1, t-1} + \epsilon_{1,t}$, $X_{2,t} = 0.5X_{2,t-1} + \epsilon_{2,t}$, $X_{3,t} = X_{1,t-1}$.\\
-3.& $X_{1,t} = \epsilon_{1,t}\sqrt{0.01 + 0.5X_ {t-1}^2}$, $X_{2,t} = 0.5X_{2, t-1} + \epsilon_{2,t}$, $X_{3,t} = X_{1,t-1}$.\\
+3.& $X_{1,t} = \epsilon_{1,t}\sqrt{0.01 + 0.5X_ {1,t-1}^2}$, $X_{2,t} = 0.5X_{2, t-1} + \epsilon_{2,t}$, $X_{3,t} = X_{1,t-1}$.\\
 4.& $X_{1,t} = \epsilon_{1,t}\sqrt{h_{1,t}}$, $X_{2,t} = \epsilon_{2,t}\sqrt{h_{2,t}}$, $X_{3,t} = X_{1,t-1}$, \\ & $h_{1,t}  = 0.01 + 0.9h_{1,t-1} + 0.05X_{1,t-1}^2$, $h_{2,t} = 0.01 + 0.9h_{2,t-1} + 0.05X_{2,t-1}^2$. \\
 5.& $X_{1,t} = 0.5X_{1,t-1} + 0.5X_{2,t} + \epsilon_{1,t}$, $X_{2,t} = 0.5X_{2,t-1} + \epsilon_{2,t}$, $X_{3,t} = X_{1,t-1}$.\\
 6.& $X_{1,t} = 0.5X_{1,t-1} + 0.5X_{2,t}^2 + \epsilon_{1,t}$, $X_{2,t} = 0.5X_{2,t-1} + \epsilon_{2,t}$, $X_{3,t} = X_{1,t-1}$.\\
 7.& $X_{1,t} = 0.5X_{1,t-1}0.5X_{2,t} + \epsilon_{1,t}$, $X_{2,t} = 0.5X_{2,t-1} + \epsilon_{2,t}$, $X_{3,t} = X_{1,t-1}$.\\
 8.& $X_{1,t} = 0.5X_{1,t-1} + 0.5X_{2,t}\epsilon_{1,t}$, $X_{2,t} = 0.5X_{2,t-1} + \epsilon_{2,t}$, $X_{3,t} = X_{1,t-1}$.\\
 9.& $X_{1,t} = \epsilon_{1,t}\sqrt{0.01 + 0.5X_{1,t-1}^2 + 0.25X_{2,t}}$, $X_{2,t} = X_{2,t-1} + \epsilon_{2,t}$, $X_{3,t} = X_{1,t-1}$.\\
-10. & $X_{1,t} = \epsilon_{1,t}\sqrt{h_{1,t}}$, $X_{2,t} = \epsilon_{2,t}\sqrt{h_{2,t}}$, $X_{3,t} = X_{1,t-1}$, $h_{1,t} = 0.01 + 0.1h_{1, t-1} + 0.4X_{1,t-1}^2 +$ \\ & $0.5X_{2,t}^2$, $h_{2,t} = 0.01 + 0.9h_{2, t-1} + 0.5Y_t^2$.\\
+10. & $X_{1,t} = \epsilon_{1,t}\sqrt{h_{1,t}}$, $X_{2,t} = \epsilon_{2,t}\sqrt{h_{2,t}}$, $X_{3,t} = X_{1,t-1}$, $h_{1,t} = 0.01 + 0.1h_{1, t-1} + 0.4X_{1,t-1}^2 +$ \\ & $0.5X_{2,t}^2$, $h_{2,t} = 0.01 + 0.9h_{2, t-1} + 0.5X_t^2$.\\
 \hline
 \end{tabular}
 \caption{Data generating processes in simulation experiment}
@@ -479,7 +479,7 @@ Let $(\epsilon_{1,t}, \epsilon_{2,t}, \epsilon_{3,t})$ be IID observations from 
 
 The null hypotheses of conditional independence between $X_{1,t}$ and $X_{2,t}$ given $X_{3,t}$ is true for DGPs 1--4, and these will be used to check the level of the test, while for DGPs 5--10 we measure the power. By evaluating our test using the sample sizes $n = 100$ and $n = 200$ at the $5\%$ level, we can harvest a great number of corresponding results from the literature, and they are presented below. 
 
-The first set of simulation results are collected from @su2008nonparametric: In Table \ref{tab:n100} LIN is a standard linear Granger causality test, CM and KS are tests by @linton1997conditional that use statistics of the two versions of the nonparametric test developed by @delgado2001significance. HEL refers to the Hellinger distance test that @su2008nonparametric present. Next, we move to @su2014testing, who provide simulations for their test for conditional independence based on the empirical likelihood (SEL), as well as the test by @su2007consistent that is based on properties of the conditional characteristic function (CHF). @cheng2012conditional provide simulations for their tests based on the maximal conditional correlation (MCC). In the online supplement to this article we provide a richer version of Table \@ref(tab:n100) below, namely Table 2*, that includes more results for the HEL- and MCC-tests at different levels of smoothing.
+The first set of simulation results are collected from @su2008nonparametric: In Table \ref{tab:n100} LIN is a standard linear Granger causality test, SCM and SKS are tests by @linton1997conditional that use statistics of the two versions of the nonparametric test developed by @delgado2001significance. HEL refers to the Hellinger distance test that @su2008nonparametric present. Next, we move to @su2014testing, who provide simulations for their test for conditional independence based on the empirical likelihood (SEL), as well as the test by @su2007consistent that is based on properties of the conditional characteristic function (CHF). @cheng2012conditional provide simulations for their tests based on the maximal conditional correlation (MCC). In the online supplement to this article we provide a richer version of Table \@ref(tab:n100) below, namely Table 2*, that includes more results for the HEL- and MCC-tests at different levels of smoothing.
 
 \input{tables/power_table_dim3_n100_short}
 
@@ -489,11 +489,11 @@ We see in Table \ref{tab:n100} that our test has the correct level and is quite 
 
 When $n=200$ we can include simulation results reported by @bouezmarni2012nonparametric for their conditional independence test based on measuring the Hellinger distance between copula density estimates (shortened BRT from the names of the authors) as well as the results reported by @boue:taam:2014 on their test based on $L_2$ distances between estimated conditional distribution functions, which is abbreviated by BT. We include in Table 3* in the online supplement all results from these papers. The general picture is the same as in Table \ref{tab:n100}. In particular for the case with $c=1.4$, our new test exhibits the best over-all performance among the examples listed, which, again to the best of our knowledge, include all such simulation results that have been published to date. It is seen that the standard linear Granger causality test (LIN) has a miserable performance in these examples. 
 
-@su2014testing define two extensions to a subset of the data generating processes defined in Table 1 in which the conditioning variable $\Xtwo$ is a vector with two and three components respectively. We refer to the online supplement for details regarding these extensions and numerical results. The new test for conditional independence based on the LGPC produces competitive results also in these cases. We point out again, however, that testing for conditional independence is merely one, albeit an important one, of several chief objectives for introducing the LGPC. Possible refinements of the LGPC testing is mentioned in the beginning of Section \@ref(fauna).
+@su2014testing define two extensions to a subset of the data generating processes defined in Table 1 in which the conditioning variable $\Xtwo$ is a vector with two and three components respectively. We refer to the online supplement for details regarding these extensions and numerical results. The new test for conditional independence based on the LGPC produces competitive results also in these cases. We point out again, however, that testing for conditional independence is merely one, albeit an important one, of several chief objectives for introducing the LGPC. Possible refinements of the LGPC testing is mentioned in the beginning of Section \@ref(chap:testing).
 
 # CONCLUSION AND OUTLOOK
 
-The purpose of this paper is two-fold. First we define and develop the LGPC, a signed local measure of conditional dependence that has useful properties and is easy to interpret. It ca measure both positive and negative conditional dependence. We then explore the possibility of using the LGPC in estimation of conditional dependence and indicate its potential in testing for conditional independence. The results are promising, and suggest that the newly developed tool provides powerful improvements to existing methods.
+The purpose of this paper is two-fold. First we define and develop the LGPC, a signed local measure of conditional dependence that has useful properties and is easy to interpret. It can measure both positive and negative conditional dependence. We then explore the possibility of using the LGPC in estimation of conditional dependence and indicate its potential in testing for conditional independence. The results are promising, and suggest that the newly developed tool provides powerful improvements to existing methods.
 
 For 3 scalar variables $X_1, X_2, X_3$ a full trivariate analysis depending on all 3 coordinates can be undertaken as in Section \@ref(chap:trivariate-full). If any of the components $X_1, X_2$ or $X_3$ are vectors, a pairwise approximation and simplification has been described in Section \@ref(chap:bivariate). This can be likened to additive approximation in nonparametric regression.
 
@@ -503,6 +503,6 @@ There is a potential for much further work. A next natural step may be structura
 
 All methods presented in this paper have been implemented in the R programming language [@r], and is available in the package **lg** [@otneim2019lg]. In addition, we provide code and data for easy replication of the results presented here in an online appendix.
 
-**Acknowledgements.** The authors gratefully acknowledge the editor as well as two anonymus referees, whose comments have greatly improved this paper.
+**Acknowledgements.** The authors gratefully acknowledge the input of an associate editor as well as two anonymuos referees, whose comments have greatly improved this paper.
 
 # REFERENCES
