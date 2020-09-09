@@ -88,6 +88,7 @@
 \newcommand{\z}{\bm{z}}
 \newcommand{\hz}{\widehat{z}}
 \newcommand{\hfz}{\widehat{\bm{z}}}
+\newcommand{\hfZ}{\widehat{\bm{Z}}}
 \newcommand{\hZ}{\widehat{\bm{Z}}}
 \newcommand{\hnZ}{\widehat{Z}}
 \newcommand{\Zone}{\bm{Z}^{(1)}}
@@ -172,14 +173,14 @@
 \hypertarget{definition}{%
 \subsection{Definition}\label{definition}}
 
-The literature on nonlinear conditional dependence modeling is mostly concerned with the simple case where the vector of conditionally independent variables consists of two scalar random variables, \(\Zone = (Z_1, Z_2)\), and this case is therefore the focus of our treatment of the LGPC in the main article. This means that we estimate a single local Gaussian partial correlation function \(\widehat \alpha(\z)\). One of the most attractive properties of the LGPC, however, is the close parallel to the multivariate Gaussian distribution, and this is also the case when describing conditional dependence among more than two variables, which in our case leads to the estimation of a \emph{matrix} of local Gaussian partial correlations. Besides needing a slightly more involved notation, this is a straightforward exercise in our framework as we will see below.
+The literature on nonlinear conditional dependence modeling is mostly concerned with the simple case where the vector of conditionally dependent variables consists of two scalar random variables, \(\Zone = (Z_1, Z_2)\), and this case is therefore the focus of our treatment of the LGPC in the main article. This means that we estimate a single local Gaussian partial correlation function \(\widehat \alpha(\z)\). One of the most attractive properties of the LGPC, however, is the close parallel to the multivariate Gaussian distribution, and this is also the case when describing conditional dependence among more than two variables, which in our case leads to the estimation of a \emph{matrix} of local Gaussian partial correlations. Besides needing a slightly more involved notation, this is a straightforward exercise in our framework as we will see below.
 
 Let \(\Z\) be a vector of continuous random variables, that we split in two components \(\Z = (\Zone, \Ztwo)\), but this time \(\Zone = (Z_1, \ldots, Z_{d_1 + d_2})\) is itself a vector with dimension \(d_1 + d_2\) that is split in two groups; the \(d_1\)-dimensional vector \(\Z_1\) and the \(d_2\)-dimensional vector \(\Z_2\). The vector \(\Ztwo = \Z_3\) is a vector of \(d_3\) random variables. Denote by \(\fmu\) and \(\fSigma\) the expectation vector and the covariance matrix of \(\Z\), now partitioned according to our partition of \(\Z = (\Z_1, \Z_2, \Z_3)\) as
 
 \[\fmu = \begin{pmatrix} \fmu_1 \\ \fmu_2 \\ \fmu_3 \end{pmatrix}, \qquad \fSigma = \begin{pmatrix} \fSigma_{11} & \fSigma_{12} & \fSigma_{13} \\ \fSigma_{21} & \fSigma_{22} & \fSigma_{23} \\ \fSigma_{31} & \fSigma_{32} & \fSigma_{33} \end{pmatrix},\]
 where \(\fSigma_{11}\) is the covariance matrix of \(\Z_1\), \(\fSigma_{23}\) contains the covariances between \(\Z_2\) and \(\Z_3\), and so forth, and where naturally \(\fSigma^T = \fSigma\), \(\fSigma_{12}^T = \fSigma_{21}\), \(\fSigma_{13}^T = \fSigma_{31}\), and \(\fSigma_{23}^T = \fSigma_{32}\).
 
-All of these parameters can be described and estimated locally in the exact same way as laid out in the main article, resulting from the locally Gaussian joint density \(\psi(\z,\fv)\) at the point \(\fv = \z\),
+All of these parameters can be described and estimated locally in the exact same way as laid out in the main article, resulting from the locally approximating Gaussian joint density \(\psi(\z,\fv)\) at the point \(\fv = \z\),
 
 \begin{equation}
 \psi(\z) = \frac{1}{(2\pi)^{(d_1+d_2+d_3)/2}|\fSigma(\z)|^{1/2}} \exp \left\{-\frac{1}{2}(\z - \fmu(\z))^T\fSigma^{-1}(\z)(\z - \fmu(\z))\right\}
@@ -304,7 +305,7 @@ hence $\begin{pmatrix} \fSigma_{13} & \fSigma_{23}\end{pmatrix}^T$ is of dimensi
 $$\begin{pmatrix} \fSigma_{13} \\ \fSigma_{23} \end{pmatrix} \fSigma_{33}^{-1} \begin{pmatrix} \fSigma_{31} & \fSigma_{32} \end{pmatrix}$$
 is of dimension $2\times2$. However, as is immediately seen, no formulas like \eqref{eq:offdiag1}--\eqref{eq:offdiag3} will appear; they will be much more complicated and include sums and products of various correlations.
 
-\item[\textbf{d)}] \textbf{Let} $\bm{d_1, d_2}$ \textbf{and} $\bm{d_3}$ \textbf{be arbitrary}. This is the general case, and it seems impossible to obtain explicit formulas for the local Gaussian partial correlations, but the general fact still holds of course: The local partial correlation matrix of $\Z_1$and $\Z_2$ given $\Z_3$ can be identified by the lower left hand block matrix of $\D^{-1/2}\fSigma_{12|3}\D^{-1/2}$, and can be estimated using pairwise local correlations in \eqref{eq:matrixdef}.
+\item[\textbf{d)}] \textbf{Let} $\bm{d_1, d_2}$ \textbf{and} $\bm{d_3}$ \textbf{be arbitrary}. This is the general case, and it seems impossible to obtain simple explicit formulas for the local Gaussian partial correlations, but the general fact still holds of course: The local partial correlation matrix of $\Z_1$and $\Z_2$ given $\Z_3$ can be identified by the lower left hand block matrix of $\D^{-1/2}\fSigma_{12|3}\D^{-1/2}$, and can be estimated using pairwise local correlations in \eqref{eq:matrixdef}.
 \end{itemize}
 
 \hypertarget{chap:estimation}{%
@@ -329,7 +330,7 @@ We present the asymptotic theory for the local likelihood estimator of the local
 \begin{equation}
 \sqrt{nb_n^2}\left(\widehat{\alpha}(z))-\alpha(z)\right)  \stackrel {{\cal L}}{\to} {\cal N}(0,\nabla g(\frho)^{T} {\fLambda} \nabla g (\frho)),
 \end{equation}
-see eq. (22) in the main article, and see Theorem 2 in Otneim and Tjøstheim (2018) with $\fSigma = \fLambda$ for a definition of $\fLambda$. The computation of $\nabla g$ is outlined in Section \ref{app-asvar}.
+see eq. (22) in the main article, and see Theorem 2 in Otneim and Tjøstheim (2018) with $\fSigma = \fLambda$ in that theorem. The computation of $\nabla g$ is outlined in Section \ref{app-asvar}.
 \end{itemize}
 
 These results can be extended to the multivariate cases that we treat in this supplement in Section \ref{special-cases} as well. The assumptions remain identical to the assumptions in Theorem 3.1 in the main article and Theorem 3 in Otneim and Tjøstheim (\protect\hyperlink{ref-otneim2017conditional}{2018}).
@@ -345,19 +346,19 @@ The joint asymptotic normality of the pairwise partial correlation estimates can
 Observe, finally, that a more general pairwise scheme can be devised, as treated in detail by Lacal and Tjøstheim (\protect\hyperlink{ref-lacal2017local}{2017}), Lacal and Tjøstheim (\protect\hyperlink{ref-lacal2018estimating}{2018}) and Jordanger and Tjøstheim (\protect\hyperlink{ref-jordanger2017nonlinear}{2020}):
 
 \begin{itemize}
-\item[\textbf{(v)}] In this scheme, we do not use a pairwise set-up for the local correlation only (the one-parameter case), but for all parameters in a bivariate normal distribution; the correlation $\rho(x_1, x_2)$, the expectations $\mu_1(x_1,x_2), \mu_2(x_1,x_2)$ and the variances $\sigma_1(x_1,x_2),\sigma_2(x_1,x_2)$ (the five-parameter case). This setup can also be simplified and fitted to a $p$-variate distribution by estimating $\mu_i = \mu_i(x_1)$ and $\sigma_i = \sigma_i(x_i)$, $i=1,\ldots,p$, marginally. Tjøstheim and Hufthammer (2013) give the asymptotic theory in this case. 
+\item[\textbf{(v)}] In this scheme, we do not use a pairwise set-up for the local correlation only (the one-parameter case), but for all parameters in a bivariate normal distribution; the correlation $\rho(x_1, x_2)$, the expectations $\mu_1(x_1,x_2), \mu_2(x_1,x_2)$ and the variances $\sigma_1(x_1,x_2),\sigma_2(x_1,x_2)$ (the five-parameter case). This setup can also be simplified and fitted to a $p$-variate distribution by estimating $\mu_i = \mu_i(x_i)$ and $\sigma_i = \sigma_i(x_i)$, $i=1,\ldots,p$, marginally. Tjøstheim and Hufthammer (2013) give the asymptotic theory in this case. 
 \end{itemize}
 
-Below is a brief summary of the relevant local likelihood theory for the general pairwise case of (ii)--(iv). We also state a general consistency result in Theorem \ref{thm:A1} at the end of this section.
+Below is a brief summary of the relevant local likelihood theory for the general pairwise case of (ii)--(iv). We also state a general consistency result in Theorem \ref{thm:A1} at the end of this section. Utilizing Theorem 3.2 in the main article we replace the pseudo normals \(\hfZ_t\) of equation (12) of the main paper by vectors \(\Z_t\) having standard normal marginals.
 
-The pairwise log-likelihood in cases (ii) -- (iv) is given by
+The pairwise log-likelihood in cases (ii) -- (iv) can then be written as
 
 \begin{align}
 L_{n,b}(\Z_{in}, \Z_{jn}; \rho_b(z_i, z_j)) &= \frac{1}{n}\sum_{t=1}^n K_b(Z_{i,t} - z_i, Z_{j,t} - z_j)\log\left(\psi(Z_{i,t}, Z_{j,t}; \rho_b(z_i, z_j))\right) \nonumber \\  
 & \qquad\qquad\qquad - \int K_b(v-z_i, w- z_j)\psi(v,w;\rho_b(z_i, z_j)) \, \di v \di w,
 \label{eq:loglikelihood}
 \end{align}
-where \(\Z_{in} = (Z_{i,1}, Z_{i,2}, \ldots, Z_{i,n})\) and \(\Z_{jn} = (Z_{j,1}, Z_{j,2}, \ldots, Z_{j,n})\) are the observation vectors for components \(i\) and \(j\) respectively, \(n\) is the number of observations, \(z_i, z_j, v, w \in \mathbb{R}\), \(\rho_b = \rho_{ij,b}(z_i,z_j)\) is the local Gaussian correlation parameter, \(K_b(v-z_i, w-z_j) = (b_1b_2)^{-1}K(b_1^{-1}(v-z_i))K(b_2^{-1}(w-z_j))\) is a product kernel with bandwidth \(b=b_n=(b_1,b_2) = (b_{1n}, b_{2n})\), and \(K\) is an non-negative kernel function with compact support such that \(\int K(v,w) = 1\). For a fixed bandwidth \(b\), \(\rho_{0,b}\) is the true local parameter, that is, the minimizer of the local penalty function
+where \(\Z_{in} = (Z_{i,1}, Z_{i,2}, \ldots, Z_{i,n})\) and \(\Z_{jn} = (Z_{j,1}, Z_{j,2}, \ldots, Z_{j,n})\) are the \(\Z\)-vectors for components \(i\) and \(j\) respectively, \(n\) is the number of observations, \(z_i, z_j, v, w \in \mathbb{R}\), \(\rho_b = \rho_{ij,b}(z_i,z_j)\) is the local Gaussian correlation parameter, \(K_b(v-z_i, w-z_j) = (b_1b_2)^{-1}K(b_1^{-1}(v-z_i))K(b_2^{-1}(w-z_j))\) is a product kernel with bandwidth \(b=b_n=(b_1,b_2) = (b_{1n}, b_{2n})\), and \(K\) is an non-negative kernel function with compact support such that \(\int K(v,w) = 1\). For a fixed bandwidth \(b\), \(\rho_{0,b}\) is the true local parameter, that is, the minimizer of the local penalty function
 
 \begin{equation}
 \int K_b(v-z_i, w-z_j)\big[\psi(v,w; \rho_b(z_i, z_j)) - \log(\psi(v,w; \rho_b(z_i, z_j)))f(v,w)\big] \di v \di w,
@@ -370,7 +371,7 @@ L_{n,b}(\rho) = \frac{1}{n}\sum_{t=1}^n L^{(b)}(Z_{i,t}, Z_{j,t}; \rho),
 where
 \begin{align}
 L^{(b)}(Z_{i,t}, Z_{j,t}; \rho) &= K_b(Z_{i,t} - z_i, Z_{j,t} - z_j)\log\left(\psi(Z_{i,t}, Z_{j,t}; \rho_b(z_i, z_j))\right) \nonumber \\  
-& \qquad\qquad\qquad - \int K_b(v-z_i, w- z_j)\rho_b(v,w;\psi_b(z_i, z_j)) \, \di v \di w.
+& \qquad\qquad\qquad - \int K_b(v-z_i, w- z_j)\psi(v,w;\rho_b(z_i, z_j)) \, \di v \di w.
 \label{eq:A16}
 \end{align}
 
@@ -402,7 +403,7 @@ For fixed bandwidths we have from standard arguments, such as those provided by 
 \sqrt{nb^3}\left(\hfrho_n - \frho_0\right) \stackrel{d}{\rightarrow} \mathcal{N}(0, \Jb^{-1}\Mb(\Jb^{-1})^T),
 \label{eq:fixed-h}
 \end{equation}
-which corresponds to the usual rate for nonparametric density estimation. As \(\hh\rightarrow0\), however, we must take extra care when considering the asymptotic covariance matrix. Tjøstheim and Hufthammer (\protect\hyperlink{ref-tjostheim2013local}{2013}), Section 4, write the Taylor expansions of \(\Mb\) and \(\Jb\), being functionals of three variables \((x_1, x_2, x_3)\) or \((z_1,z_2,z_3)\), as
+which corresponds to the usual rate for nonparametric density estimation. As \(\hh\rightarrow0\), however, we must take extra care when considering the asymptotic covariance matrix. Tjøstheim and Hufthammer (\protect\hyperlink{ref-tjostheim2013local}{2013}), Section 4, write the Taylor expansions of \(\Mb\) and \(\Jb\), now being functionals of three variables \((x_1, x_2, x_3)\) or \((z_1,z_2,z_3)\), as
 \[\Mb = I_{\bm{M}} + II_{\bm{M}} + o(b^2) \,\,\, \textrm{ and } \Jb = I_{\bm{J}} + II_{\bm{J}} + o(b^2),\]
 and consider each term. For example, we write their first term in the expansion of \(\Mb\) in the three-variate case as follows:
 \[I_{\bm{M}} \sim \int K^2(w_1, w_2, w_3)Ab_wb_w^TA^Tf(\z + b_1w_1 + b_2w_2 + b_3w_3)\,\textrm{d}w_1\,\textrm{d}w_2\,\textrm{d}w_3,\]
@@ -466,14 +467,14 @@ with \(\hnZ_t = \Phi^{-1}(F_n(\X_t))\), and \(F_n(\X_t)\) is the application of 
 In order to ease notation we state the proof in the simplified case only, where the local correlations are estimated using \emph{pairs} \((i,j)\) of variables. Then \(Y_n\) can be taken to be a scalar. It can be extended to the trivariate case by adding the appropriate terms in the derivations below, without changing the final conclusion. Write \(\hY_n(\z) = Y_n(\z) - (Y_n(\z) - \hY_n(\z))\) and do a Taylor expansion of \(Y_n(\z)\) around \(F_n(\X_t)\). Since we use product kernels, we then need derivatives of (assuming without loss of generality that \(K(x) = K(-x)\))
 
 \[H_{\z,\hh} = K\left(\frac{z_1 - \Phi^{-1}(y_1)}{b}\right)K\left(\frac{z_2 - \Phi^{-1}(y_2)}{b}\right)v(\Phi^{-1}(\y)),\]
-where \(\y = F(\x)\), \(y_i = F(x_i)\), \(i=1,2\), and we write \(K(x_1,x_2) = K(x_1)K(x_2)\). Writing \(k(z) = K'(z)\) and \(v_{y_i} = \partial v_i/\partial y_i,\)
+where \(\y = F(\x)\), \(y_i = F(x_i)\), \(i=1,2\), and we write \(K(x_1,x_2) = K(x_1)K(x_2)\). Writing \(k(z) = K'(z)\) and \(v_{i} = \partial v_i/\partial y_i,\)
 \begin{align*}
 \frac{\partial H_{\bm{z},b}}{\partial y_1} 
 &= k\left(\frac{z_1 - \Phi^{-1}(y_1)}{b}\right) K\left(\frac{z_2 - \Phi^{-1}(y_2)}{b}\right) \frac{v(\Phi^{-1}(\y))}{b\phi(\Phi^{-1}(y_1))} \\
 & \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad +  K\left(\frac{z_1 - \Phi^{-1}(y_1)}{b}\right) K\left(\frac{z_2 - \Phi^{-1}(y_2)}{b}\right) \frac{v_1(\Phi^{-1}(\y))}{\phi(\Phi^{-1}(y_1))}, \\
 \frac{\partial H_{\bm{z},b}}{\partial y_2} 
 &= K\left(\frac{z_1 - \Phi^{-1}(y_1)}{b}\right) k\left(\frac{z_2 - \Phi^{-1}(y_2)}{b}\right) \frac{v(\Phi^{-1}(\y))}{b\phi(\Phi^{-1}(y_2))} \\
-& \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad+  K\left(\frac{z_1 - \Phi^{-1}(y_1)}{b}\right) K\left(\frac{z_2 - \Phi^{-1}(y_2)}{b}\right) \frac{v_2(\Phi^{-1}(\y))}{\phi(\Phi^{-1}(y_1))}.
+& \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad+  K\left(\frac{z_1 - \Phi^{-1}(y_1)}{b}\right) K\left(\frac{z_2 - \Phi^{-1}(y_2)}{b}\right) \frac{v_2(\Phi^{-1}(\y))}{\phi(\Phi^{-1}(y_2))}.
 \end{align*}
 A typical term in the Taylor expansion of \(Y_n(\z)\) takes the following form:
 
@@ -504,12 +505,12 @@ All this means that if we can prove that for \(i=1,2\),
 \[\frac{1}{n}\sum_{t=1}^n(F_n(X_{i,t}) - F(X_{i,t})) \stackrel{\mathbb{P}}{\rightarrow} 0\]
 at an appropriate rate, then we are done by Slutsky's Theorem.
 
-In the original version of this proof we used an argument based on the law of the iterated logarithm of Rio (\protect\hyperlink{ref-rio1995functional}{1995}), leading to a rate of \(n^{-1/2}(2 \log \log n )^{1/2}\), but an anynomous referee provided us with a much simpler argument based on a U-statistic decomposition for a strongly mixing process. In the following we omit the index \(i=1,2\):
+In the original version of this proof we used an argument based on the law of the iterated logarithm of Rio (\protect\hyperlink{ref-rio1995functional}{1995}), leading to a rate of \(n^{-1/2}(2 \log \log n )^{1/2}\), but an anynomous referee provided us with a much simpler argument based on a U-statistic decomposition for a strongly mixing process:
 
 \begin{align*}
-\frac{1}{n}\sum_{i=1}^n \left(F_n(X_{i,t}) - F(X_{i,t})\right) &= 
-\frac{1}{n^2}\sum_{i=1}^n\sum_{j\neq i}^n \left(I(X_{j, t} \leq X_{i,t}) - F(X_{i,t})\right) + \frac{1}{n^2}\sum_{i=1}^n \left(1 - F(X_{i,t}\right) \\
-&= \frac{1}{n} \sum_{i=1}^n \left(0.5 - F(X_{i,t})\right) + O_p\left(n^{-1}\right) \\
+\frac{1}{n}\sum_{t=1}^n \left(F_n(X_{i,t}) - F(X_{i,t})\right) &= 
+\frac{1}{n^2}\sum_{t=1}^n\sum_{s \neq t}^n \left(I(X_{i,s} \leq X_{i,t}) - F(X_{i,t})\right) + \frac{1}{n^2}\sum_{t=1}^n \left(1 - F(X_{i,t}\right) \\
+&= \frac{1}{n} \sum_{t=1}^n \left(0.5 - F(X_{i,t})\right) + O_p\left(n^{-1}\right) \\
 &= O_p\left(n^{-1/2}\right) + O_p\left(n^{-1}\right) \\
 &= O_p\left(n^{-1/2}\right).
 \end{align*}
@@ -519,9 +520,9 @@ In the original version of this proof we used an argument based on the law of th
 
 The asymptotic theory for the LGPC involves complicated expressions that may be difficult to implement in practice. It is then natural to use the bootstrap instead to construct confidence intervals. In order to accommodate the time series case, we must use the block bootstrap, and we are thus faced with the problem of proving the validity of the block bootstrap.
 
-We have seen that the building blocks of the asymptotic estimation theory of the LGPC between the vectors \(\Z_1\) and \(\Z_2\) given \(\Z_3\) are the pairwise local Gaussian correlations contained in the local correlation matrix \(\fSigma\). Let us simply use the notation \(\rho_{ij} = \rho_{ij}(z_i, z_j)\) for one of these local correlation and \(\hrho_{ij}\) for its estimate as outlined in the main article. If we can prove that the block bootstrap is valid for such a pairwise local likelihood estimate, then it follows fairly straightforwardly that it is also valid for the appropriate vector of such pairwise estimates used in the asymptotic theory laid out above. Note that the 3-coordinate case (i) in Section \ref{chap:estimation} requires essentially the same arguments.
+We have seen that the building blocks of the asymptotic estimation theory of the LGPC between the vectors \(\Z_1\) and \(\Z_2\) given \(\Z_3\) are the pairwise local Gaussian correlations contained in the local correlation matrix \(\fSigma\). Let us simply use the notation \(\rho_{ij} = \rho_{ij}(z_i, z_j)\) for one of these local correlations and \(\hrho_{ij}\) for its estimate as outlined in the main article. If we can prove that the block bootstrap is valid for such a pairwise local likelihood estimate, then it follows fairly straightforwardly that it is also valid for the appropriate vector of such pairwise estimates used in the asymptotic theory laid out above. Note that the 3-coordinate case (i) in Section \ref{chap:estimation} requires essentially the same arguments.
 
-We can use the bootstrap theory by Lacal and Tjøstheim (\protect\hyperlink{ref-lacal2018estimating}{2018}) more or less directly, which in turn is based on Gon\c{c}alves and White (\protect\hyperlink{ref-gonccalves2002bootstrap}{2002}, \protect\hyperlink{ref-gonccalves2004maximum}{2004}), but we spell out some details below. First, we need to specify the analogue of the conditions A1--A5 by Lacal and Tjøstheim (\protect\hyperlink{ref-lacal2018estimating}{2018}), where we adapt their notation to our situation by replacing the parameter \(\theta\) with \(\rho_{ij}\), and the time series \(\{X_t, Y_t\}\) by our multivariate observations \(\{\Z_t\}\). Since \(\rho = \rho_{ij}\) is estimated using the two corresponding data vectors only, we can, for the time being and without loss of generality, assume that the observation series is bivariate: \({\Z_t} = \{Z_{i,t}, Z_{j,t}\}\). Note further that it suffices to consider the true pseudo-observations \(\{\Z_t\}\) instead of the empirical pseudo observations \(\{\hZ_t\}\) in the following because the difference between them is asymptotically negligible according to Theorem 3.2 in the main article.
+We can use the bootstrap theory by Lacal and Tjøstheim (\protect\hyperlink{ref-lacal2017local}{2017}, \protect\hyperlink{ref-lacal2018estimating}{2018}) more or less directly, which in turn is based on Gon\c{c}alves and White (\protect\hyperlink{ref-gonccalves2002bootstrap}{2002}, \protect\hyperlink{ref-gonccalves2004maximum}{2004}), but we spell out some details below. First, we need to specify the analogue of the conditions A1--A5 by Lacal and Tjøstheim (\protect\hyperlink{ref-lacal2018estimating}{2018}), where we adapt their notation to our situation by replacing the parameter \(\theta\) with \(\rho_{ij}\), and the time series \(\{X_t, Y_t\}\) by our multivariate observations \(\{\Z_t\}\). Since \(\rho = \rho_{ij}\) is estimated using the two corresponding data vectors only, we can, for the time being and without loss of generality, assume that the observation series is bivariate: \({\Z_t} = \{Z_{i,t}, Z_{j,t}\}\). Note further that it suffices to consider the true pseudo-observations \(\{\Z_t\}\) instead of the empirical pseudo observations \(\{\hZ_t\}\) in the following because the difference between them is asymptotically negligible according to Theorem 3.2 in the main article.
 
 To state the bootstrap results we need a few more concepts and three additional conditions. We block-bootstrap the entire vector series \(\{\Z_t\}\). This automatically leads to the same block-bootstrap for any pair of components which we have denoted by \(\{Z_{i,t}, Z_{j,t}\}\) above. Lacal and Tjøstheim (\protect\hyperlink{ref-lacal2018estimating}{2018}) use both the block bootstrap as well as the stationary bootstrap, and the results below hold irrespective of this particular choice. We will therefore not distinguish between them here, but rather refer the reader to Lacal and Tjøstheim (\protect\hyperlink{ref-lacal2018estimating}{2018}) for further details on this distinction. Bootstrapped quantities will be denoted with a star (\(*\)) in the following.
 
@@ -585,16 +586,16 @@ Assume the conditions of Theorem \ref{thm:E1}. Let $\alpha_{n,b}(i,j|\Z_3) \stac
 The next results gives the asymptotic normality of the bootstrapped local partial correlation. We let \(\alpha(i,j)|\Z_3) = g_{ij}(\frho(\Z)))\) be the local partial correlation as defined above and expressed as a function \(g_{ij}\) of the vector of local correlations according to one of the alternatives (i)`, (ii)--(v). Using the notation of Section \ref{chap:estimation} of this supplement, the correlation vector \(\frho(\Z)\) will in general have elements consisting of \(\rho_{ij}^{1,2}, i =1,\ldots,d_1, j=1,\ldots,d_2;\;\rho_{ij}^{1,3}, i=1,\ldots,d_1, j=1,\ldots,d_3;\;\rho_{ij}^{2,3}, i=1,\ldots,d_2, j=1,\ldots,d_3\), where \(d_1,d_2,d_3\) are chosen according to one of the alternatives (i)', (ii)--(v).
 
 \begin{cor}
-Let the assumptions of Theorem \ref{thm:E2} hold and let $\fOmega = \fOmega(\frho)$ be the covariance matrix of the $\widehat{\frho}$ vector. Then,
+Let the assumptions of Theorem \ref{thm:E2} hold and let $\fLambda = \fLambda(\frho)$ be the covariance matrix of the $\widehat{\frho}$ vector. Then,
 $$
-\sqrt{nb_1b_2}(\alpha_{n,b}^*(i,j)-\alpha_{n,b}(i,j)) \buildrel {d_{\mathbb{P}_{\omega}^{*}}} \over {\longrightarrow} {\cal N}(0,\nabla g(\rho)^T \fOmega(\frho)) \nabla g(\rho)) \,\, \mbox{prob}-\mathbb{P}. 
+\sqrt{nb_1b_2}(\alpha_{n,b}^*(i,j)-\alpha_{n,b}(i,j)) \buildrel {d_{\mathbb{P}_{\omega}^{*}}} \over {\longrightarrow} {\cal N}(0,\nabla g(\rho)^T \fLambda(\frho)) \nabla g(\rho)) \,\, \mbox{prob}-\mathbb{P}. 
 $$ 
 \label{cor:E4}
 \end{cor}
 
 \emph{Proof:} The proof of Theorem \ref{thm:E2} is given as the proof of Theorem D2 in the online appendix accompanying Lacal and Tjøstheim (\protect\hyperlink{ref-lacal2018estimating}{2018}). This proof can be adapted to prove Corollary \ref{cor:E4}. The starting point consists in replacing \(L_{n,b}^*\) and \(L_{n,b}\) by \(L^* = \sum_{i,j} a_{ij}L_{ij,n,b}^*\) and \(L = \sum_{i,j}a_{ij}L_{ij,n,b}\), respectively, where the sum runs over all possible pairs \((i,j)\) corresponding to \(\rho_{ij}^{1,2}\), \(\rho_{ij}^{1,3}\), \(\rho_{ij}^{2,3}\) that are included in the \(\frho\)-vector. The derivations in the proof of Theorem D2 by Lacal and Tjøstheim (\protect\hyperlink{ref-lacal2018estimating}{2018}) deal with the more complicated five-parameter case. In the present case, however, the vector \(\frho\) consists of correlations \(\rho_{ij}\) that have been estimated using the one-parameter pairwise setup, where, cf.~Otneim and Tjøstheim (\protect\hyperlink{ref-otneim2017locally}{2017}), the quantities \(J_{ij}\) and \(M_{ij}\) are scalars. Here \(L_{ij,n.b}\) is the log likelihood for the pair \((i,j)\) treated in the proof of Theorem D2, and \(a_{ij}\) is a corresponding sequence of real numbers. Because of the linearity of the expressions for \(L^*\) and \(L\) it is easily checked by going step by step that the proof of Theorem D2 of Lacal and Tjøstheim (\protect\hyperlink{ref-lacal2018estimating}{2018}) can be carried through for \(L^*\) and \(L\). The only difference is that the quantities \(J_{n,b}\) and \(M_{n,b}\) now have to be replaced by \(J_{n.b}(a) = \E(-\sum_{i,j}a_{ij}\nabla^2 L_{ij,n,b}(\rho_{0,b}))\) and \(\Var(\sqrt{nb_1b_2}\sum_{i,j} a_{ij}\nabla L_{ij,n,b})\). This results in joint asymptotic bootstrap normality using the Cramer-Wold device. Applying the delta rule now proves the Corollary. \(\blacksquare\)
 
-Let \(\M_{ij}\) and \(\J_{ij}\) be the \(M\)-matrix and \(J\)-matrix appearing in the proof of Corollary \ref{cor:E4} for a fixed \(\rho_{ij}\). Note that in the one-parameter case of \(\rho_{ij}\) in Corollary \ref{cor:E4}, to first order the covariance matrix \(\fOmega\) is a diagonal matrix having ordered values of \(M_{ij}/J_{ij}^2\) along the diagonal. This can be seen using the methods of proofs of Theorem 2 of Otneim and Tjøstheim (\protect\hyperlink{ref-otneim2017locally}{2017}) and Theorem 2 Otneim and Tjøstheim (\protect\hyperlink{ref-otneim2017conditional}{2018}). Note also that the 3-coordinate case of alternative (i) can be stated and proved in the same way, but a different scaling factor is required to avoid a singular covariance matrix as seen in the proof of Theorem 3.1 in the main article.
+Let \(\M_{ij}\) and \(\J_{ij}\) be the \(M\)-matrix and \(J\)-matrix appearing in the proof of Corollary \ref{cor:E4} for a fixed \(\rho_{ij}\). Note that in the one-parameter case of \(\rho_{ij}\) in Corollary \ref{cor:E4}, to first order the covariance matrix \(\fLambda\) is a diagonal matrix having ordered values of \(M_{ij}/J_{ij}^2\) along the diagonal. This can be seen using the methods of proofs of Theorem 2 of Otneim and Tjøstheim (\protect\hyperlink{ref-otneim2017locally}{2017}) and Theorem 2 Otneim and Tjøstheim (\protect\hyperlink{ref-otneim2017conditional}{2018}). Note also that the 3-coordinate case of alternative (i) can be stated and proved in the same way, but a different scaling factor is required to avoid a singular covariance matrix as seen in the proof of Theorem 3.1 in the main article. The 3-coordinate case is in fact closer to the situation in Lacal and Tjøstheim (\protect\hyperlink{ref-lacal2018estimating}{2018}).
 
 \hypertarget{asymptotic-theory-for-the-test-statistic}{%
 \section{ASYMPTOTIC THEORY FOR THE TEST STATISTIC}\label{asymptotic-theory-for-the-test-statistic}}
@@ -648,7 +649,7 @@ C_n(A_b) &= \int A_b^2(\z) \di F(\z) + \frac{1}{n}\sum_{s \neq t}\int A_b(\z)A_b
 & \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad - n\int A_b(\z)A_b(\fu) \di F(\z) \di F(\fu)
 \label{eq:t0}
 \end{align}
-with $F^{s,t}(\z,\fu)$ being the joint cumulative distribution function of $(\Z_s,\Z_t)$, and where $\{\Z_{t}, t=1,\ldots,n\}$ are the $n$ observations of $\Z$ and $u_{ij}(\Z_{ij}, \rho_{ij,b}(\fv_{ij})) = \frac{\partial}{\partial \rho_{ij,b}}\log\psi(\Z_{ij},\rho_{ij,b}(\fv_{ij}))$. 
+with $J_{ij}$ being the bivariate version of $\J_b$ defined in Theorem 3.1, and, with $F^{s,t}(\z,\fu)$ being the joint cumulative distribution function of $(\Z_s,\Z_t)$, and where $\{\Z_{t}, t=1,\ldots,n\}$ are the $n$ observations of $\Z$ and $u_{ij}(\Z_{ij}, \rho_{ij,b}(\fv_{ij})) = \frac{\partial}{\partial \rho_{ij,b}}\log\psi(\Z_{ij},\rho_{ij,b}(\fv_{ij}))$. 
 
 To ease comparison with Lacal and Tjøstheim (\protect\hyperlink{ref-lacal2018estimating}{2018}) we have written and will write $\z_{ij} \stackrel{\textrm{def}}{=} (z_i,z_j)$ and $\fv_{ij} \stackrel{\textrm{def}}{=} (v_i,v_j)$. Further, if $n \to \infty$ and $\bb_n \to \bm{0}$, the relationship between them being as in Assumption 3 of Theorem 3.1 in the main article, then $T_b$ can be replaced by $T$,
 $$
@@ -769,16 +770,16 @@ where \(G_n(z) = \sqrt{n}(F_n(z)-F(z))\) and
 \fV_n(z) &= \sqrt{n} (\frho_{n,b}(\z) - \frho_b(\z)) \\
 & \sim \sqrt{n}{\J}_b^{-1}(\z)\left\{\frac{1}{n} \sum_{t=1}^{n}K_b(\Z_t-\z)\fu(\Z_t,\frho_b(\z)) - \int K_b(\fv-\z)\fu(\fv,\frho_b(\z))\psi(\fv,\rho_b(\z)) \di \fv \right\}.
 \end{align*}
-Here \(K_b\) consists of a triple product of kernels \(\prod_{i=1}^{3}\frac{1}{b_i}K(\cdot/b_i)\), \(\fu(\z,\frho_b(\z)) = \nabla_{\frho}\log \psi(\z,\frho_b(\z))\) where \(\psi\) is the density function of a zero mean trivariate normal distribution having a covariance matrix equal to the correlation matrix and with off diagonal elements equal to the elements in \(\frho_b(\z)\). This is further developed as in the proof of Theorem \ref{thm:F2}, and the asymptotic normality of \(T_{n,b}-T_b\) follows as before from the mixing assumptions and the proof is completed by applying proposition 6.3.9 of Brockwell and Davis (\protect\hyperlink{ref-brockwell1991time}{2006}). \(\blacksquare\)
+Here \(K_b\) consists of a triple product of kernels \(\prod_{i=1}^{3}\frac{1}{b_i}K(\cdot/b_i)\), \(\fu(\z,\frho_b(\z)) = \nabla_{\frho}\log \psi(\z,\frho_b(\z))\) where \(\psi\) is the density function of a zero mean trivariate normal distribution having a covariance matrix equal to the correlation matrix and with off diagonal elements equal to the elements in \(\frho_b(\z)\). This is further developed as in the proof of Theorem \ref{thm:F2}, and the asymptotic normality of \(T_{n,b}-T_b\) follows as before from the mixing assumptions and the proof is completed by applying Proposition 6.3.9 of Brockwell and Davis (\protect\hyperlink{ref-brockwell1991time}{2006}). \(\blacksquare\)
 
 The order of \(C_n(A_b)\) is of interest as \(\bb\to \bm{0}\) and \(n \to \infty\) since it determines the convergence rate of \(T_{n,b}-T\). From Theorem 3.1 in the main article it follows that \(\frho_{n,b}(\z)\) converges at a rate of \((nb^5)^{-1/2}\) to \(\frho(z)\) as \(n \to \infty\) and \(b_1=b_2=b_3 = b \to 0\). In the proof of Theorem \ref{thm:F3} one integrates over a triple kernel function in \(C_n(A_b)\). This cancels out three \(b\)-s. so that one is left with a convergence rate of \((nb^2)^{-1/2}\) for \(T_{n,b}-T\). This is slower than the convergence rate in Theorem \ref{thm:F3}, but this is not unexpected since the faster rate in Theorem \ref{thm:F3} comes at the price of a 1-parameter pairwise simplification in the model structure.
 
 \hypertarget{chap:pitman}{%
-\section{ASYMPTOTIC POWER AND PITMAN EFFICIENCY}\label{chap:pitman}}
+\section{LOCAL ASYMPTOTIC POWER AND THE PITMAN CRITERION}\label{chap:pitman}}
 
 Since the rates of convergence in Theorems \ref{thm:F2} and \ref{thm:F3} are \(n^{-1/2}\) and \((nb^2)^{-1/2}\) respectively, the Pitman efficiency will be improved in the case of Theorem \ref{thm:F2} as compared to that of Theorem \ref{thm:F3}.
 
-We will follow the approach used by Wang and Hong (\protect\hyperlink{ref-wang2017characteristic}{2017}), in the proof of their Theorem 2 to derive the results on local asymptotic efficiency. We will explicitly use the results in Theorems \ref{thm:F2} and \ref{thm:F3} with \(h({\falpha}_{n,b}(\z)) = ||{\falpha}_{n,b}(\z)||^2\), so that \(T_{n,b} = \int _S||{\falpha}_{n,b}(\z)||^2 \di F_n(\z)\). The null hypothesis of conditional independence can then be phrased as
+We will follow the approach used by Wang and Hong (\protect\hyperlink{ref-wang2017characteristic}{2018}), in the proof of their Theorem 2 to derive the results on local asymptotic power. We will explicitly use the results in Theorems \ref{thm:F2} and \ref{thm:F3} with \(h({\falpha}_{n,b}(\z)) = ||{\falpha}_{n,b}(\z)||^2\), so that \(T_{n,b} = \int _S||{\falpha}_{n,b}(\z)||^2 \di F_n(\z)\). The null hypothesis of conditional independence can then be phrased as
 \[
 H_0: ||{\falpha(\z)}||^2 =  0 \;\; \mbox{for} \;\;\z \;\; \mbox{almost everywhere in} \;\;S. 
 \]
@@ -799,7 +800,7 @@ Let the conditions be as in Theorem \ref{thm:F2} and let $H[a_n]$ be as above wi
 T_{n,b} & = \int_S ||{\falpha}(\z)_{n,b}||^2 \di F_n(\z) \\
 &= \int _S ||{\falpha}(\z)_{n,b}||^2 \di F_n(\z) - a_n \int_S \beta(\z) \di F(\z) + a_n \int \beta(\z) \di F(\z).
 \end{align*}
-Here, using Theorem \ref{thm:F2}, under \(H[a_n]\),
+Here, using Theorem \ref{thm:F2}, under \(H[a_n]\), and Proposition 6.3.9 of Brockwell and Davis (\protect\hyperlink{ref-brockwell1991time}{2006}),
 \[
 \sqrt{n}[C_{H,n,b}(A_b)]^{-1/2}\left\{\int_S ||{\falpha}(\z)_{n,b}||^2 \di F_n(\z) - a_n \int_S \beta(\z) \di F(\z)\right\} \stackrel{d}{\to} {\cal N}(0,1).
 \]
@@ -809,7 +810,7 @@ and
 \]
 and this completes the proof. \(\blacksquare\)
 
-The alternative situation that is covered in Theorem \ref{thm:F3} can now be stated and proved analogously. In this case \(b^2\fC_{H,n,b}\) converges towards \(\fC^{\prime}(\fA)\), say, where \(b\) is the common value of the bandwidths \((b_1,b_2,b_3)\).
+The alternative situation that is covered in Theorem \ref{thm:F3} can now be stated and proved analogously. In this case \(b^2 C_{H,n,b}\) converges towards \(C^{\prime}(\fA)\), say, where \(b\) is the common value of the bandwidths \((b_1,b_2,b_3)\).
 
 \begin{thm}
 Let the conditions be as in Theorem \ref{thm:G1} and let $H[a_n]$ be as above with $a_n =(nb^2)^{-1/2}$, with $b$ the common value of the three bandwidths $(b_1,b_2,b_3)$. Then, letting $C_H^{\prime}(A)$ be the limit of $b^2C_{H,n,b}(A_b)$ as $n \to \infty$ and $b \to 0$ at the rates specified in the assumptions of Theorems \ref{thm:F2} and \ref{thm:F3}. (This limit exists using the mixing expressions of the proof of Theorem \ref{thm:F2}). Then the power of $(nb^2)^{1/2}(C_{H,n,b}(A_b))^{-1/2}(T_{n,b}-T)$ ($T = 0$ under our $H_0$, but the procedure can also be carried through with a general ${\falpha}$ under $H_0$.) is given by $\mathbb{P}[T_{n,b} \geq z_{\varepsilon}|H[a_n]) \to 1-\Phi(z_{\varepsilon}-\gamma/[C_{H}(A)^{\prime})]^{1/2})$ as $n \to \infty, b \to 0$, where $\Phi(\cdot)$ is the cumulative standard normal distribution function and $z_{\varepsilon}$ is the one-sided critical value of ${\cal N}(0,1)$ at significance level $\varepsilon$.
@@ -873,7 +874,7 @@ where \(u_{ij}(\z_{ij},\rho_{ij,n}) = \frac{\partial}{\partial \rho_{ij,n}}\log 
 \[
 I_{ij}^*(\z_{ij},\rho_{ij,n}) = \frac{\partial^2}{\partial \rho_{ij,n}^2} L_{ij,n}^{*}(\z_{ij},\rho_{ij,n}) \quad \mbox{and} \quad J_{ij,n,b}(\z_{ij}) = \E^*\left(-I_{ij}^*(\z_{ij},\rho_{ij,n})\right),
 \]
-where E\(^*(\cdot)\) is the mean value under the measure \(\mathbb{P}^*_{\omega}\), and where Lacal and Tjøstheim (\protect\hyperlink{ref-lacal2017local}{2017}, proof of Theorem 4.4) may be consulted for more details in the derivation and a more explicit analog expression for \(I_{ij}^*(\z_{ij},\rho_{ij,n})\) for the case considered there. In contradistinction to Lacal and Tjøstheim (\protect\hyperlink{ref-lacal2017local}{2017}), \(J_{ij,n,b}\) is not singular as \(\bb \to \bm{0}\). In fact, it can be shown that, cf.~Otneim and Tjøstheim (\protect\hyperlink{ref-otneim2017locally}{2017}, Theorem 2), as \(\bb \to \bm{0}\), \(J_{ij,n,b}(\z_{ij}) \stackrel{\mathbb{P}}{\to} u(\z_{ij},\rho_{ij,n})\psi(\z_{ij},\rho_{ij,n}(\z_{ij}))\).
+where E\(^*(\cdot)\) is the mean value under the measure \(\mathbb{P}^*_{\omega}\), and where Lacal and Tjøstheim (\protect\hyperlink{ref-lacal2017local}{2017}, proof of Theorem 4.4) may be consulted for more details in the derivation and a more explicit analog expression for \(I_{ij}^*(\z_{ij},\rho_{ij,n})\) for the case considered there. In contradistinction to Lacal and Tjøstheim (\protect\hyperlink{ref-lacal2017local}{2017}), \(J_{ij,n,b}\) is not singular as \(\bb \to \bm{0}\). In fact, it can be shown that, cf.~Otneim and Tjøstheim (\protect\hyperlink{ref-otneim2017locally}{2017}, Theorem 2), as \(\bb \to \bm{0}\), \(J_{ij,n,b}(\z_{ij}) \stackrel{\mathbb{P}}{\to} u(\z_{ij},\rho_{ij})\psi(\z_{ij},\rho_{ij}(\z_{ij}))\).
 
 The vector \(\tilde{V}_n(\z) = \sqrt{n}\left(\frho_{n,b}^*(\z)-\frho_{n,b}(\z)\right)\) has the dimension of \(\frho(z)\) and consists of components \(\{\rho_{ij,n,b}^*(\z_{ij}-\rho_{ij,n,b}(\z_{ij})\}\) where \(i\) and \(j\) in the most general case run over all possible pairs formed by the components of \(\frho(\z)\). To be able to use the mixing CLT analogous to Gonçalves and White (\protect\hyperlink{ref-gonccalves2002bootstrap}{2002}) we follow Lacal and Tjøstheim (\protect\hyperlink{ref-lacal2017local}{2017}) and express this more explicitly in terms of the variables \(\Z^{*}_t\), \(t=1,\ldots,n\). By Taylor expansion as in the proof of Theorem \ref{thm:F2}, and omitting the index \(ij\) on \(\rho\),
 \begin{align*}
@@ -930,9 +931,9 @@ with $F_n^{s,t}(\z,\fu)$ being the empirical joint cumulative distribution funct
 
 The limiting results for \(\alpha_n(\z)\) (or \({\falpha_n}(\z)\) in the matrix case) and \(T_{n,b}\), and the corresponding bootstrap results can be used to construct asymptotic and bootstrap confidence intervals of \(T_b\) and \(T\). In that sense they give an indication of whether \(\alpha(\z) = 0\) locally or \(\alpha(\z) \equiv 0\) globally respectively. Such confidence intervals, however, cannot in general be used to test for \(\alpha(z) \equiv 0\), i.e.~conditional independence, with a given level of the test. To be able to do that one must device a test statistic that is constructed with a probability structure as under the null hypothesis of conditional independence. It is difficult to obtain such a test based on asymptotic arguments for at least two reasons: As mentioned before the asymptotic distribution of test functionals such as \(T_{n,b}\) is known to be inaccurate except for extremely large sample sizes. It is also difficult to build the probability null structure into the scaling factor of \(T_{n,b}\) since this would amount to building into that structure certain relationships between pairwise local correlations.
 
-An alternative that has been used in the testing theory of conditional independence is the so-called local bootstrap. This is a device that uses testing based on bootstrapping from kernel density estimates. It was used for this purpose by Paparoditis and Politis (\protect\hyperlink{ref-paparoditis2000local}{2000}) and much more extensively by Su and White (\protect\hyperlink{ref-su2008nonparametric}{2008}). It has also been used (without proof) by Wang and Hong (\protect\hyperlink{ref-wang2017characteristic}{2017}) and by Huang (\protect\hyperlink{ref-huang2010testing}{2010}). We have used a variation of the local bootstrap in our test of conditional independence with good results in accuracy of level and in power. The primary purpose of the present paper is not to prove in detail properties of the local bootstrap in local Gaussian testing, but we will nevertheless indicate theoretically why a local type bootstrap argument makes sense, and why it can be expected to, and does, work also in our case. To put the local type bootstrap into our test functional context we need first to state some facts and properties of the local bootstrap as used in the literature. Note that our functional is in a sense analogous to that used by Wang and Hong (\protect\hyperlink{ref-wang2017characteristic}{2017}).
+An alternative that has been used in the testing theory of conditional independence is the so-called local bootstrap. This is a device that uses testing based on bootstrapping from kernel density estimates. It was used for this purpose by Paparoditis and Politis (\protect\hyperlink{ref-paparoditis2000local}{2000}) and much more extensively by Su and White (\protect\hyperlink{ref-su2008nonparametric}{2008}). It has also been used (without proof) by Wang and Hong (\protect\hyperlink{ref-wang2017characteristic}{2018}) and by Huang (\protect\hyperlink{ref-huang2010testing}{2010}). We have used a variation of the local bootstrap in our test of conditional independence with good results in accuracy of level and in power. The primary purpose of the present paper is not to prove in detail properties of the local bootstrap in local Gaussian testing, but we will nevertheless indicate theoretically why a local type bootstrap argument makes sense, and why it can be expected to, and does, work also in our case. To put the local type bootstrap into our test functional context we need first to state some facts and properties of the local bootstrap as used in the literature. Note that our functional is in a sense analogous to that used by Wang and Hong (\protect\hyperlink{ref-wang2017characteristic}{2018}).
 
-In our notation \(\Z_{3,t}\) is the basic \(d_3\)-dimensional process corresponding to \(X_t\) in Wang and Hong (\protect\hyperlink{ref-wang2017characteristic}{2017}). Under \(H_0\) we assume that \(\Z_{1,t}\) and \(\Z_{2,t}\) of dimensions \(d_1\) and \(d_2\) are conditionally independent given \(\Z_{3,t}\), where \(\Z_{1,t}\) and \(\Z_{2,t}\) correspond to \(Y_t\) and \(Z_t\) in Wang and Hong (\protect\hyperlink{ref-wang2017characteristic}{2017})
+In our notation \(\Z_{3,t}\) is the basic \(d_3\)-dimensional process corresponding to \(X_t\) in Wang and Hong (\protect\hyperlink{ref-wang2017characteristic}{2018}). Under \(H_0\) we assume that \(\Z_{1,t}\) and \(\Z_{2,t}\) of dimensions \(d_1\) and \(d_2\) are conditionally independent given \(\Z_{3,t}\), where \(\Z_{1,t}\) and \(\Z_{2,t}\) correspond to \(Y_t\) and \(Z_t\) in Wang and Hong (\protect\hyperlink{ref-wang2017characteristic}{2018})
 
 The first step consists in constructing a bootstrap realization \(\{\Z_{3,t}^*\}\) of \(\{\Z_{3,t}\}\) by sampling from the kernel density estimate \(\tilde{f}(\z_{3}) = \frac{1}{n}\sum_{t=1}^{n}L_b(\z_3-\Z_{3,t})\), where \(L_b\) is a \(d_3\) dimensional product kernel function with factors \(L_{b_{i}} = \frac{1}{b_{i}}L(\cdot/b_i)\). The bootstrap realizations of \(\{\Z_{1,t}^*\}\) and \(\{\Z_{2,t}^*\}\) are then created independently of each other by sampling from the conditional kernel estimators \(\tilde{f}(\z_1|\Z_{3,t}^*) = \sum_sL_b(\Z_{1,s}-\z_{1})L_b(\Z_{3,s}-\Z_{3,t}^*)/\sum_s L_b(\Z_{3,s}-\Z_{3,t}^*)\) and \(\tilde{f}(\z_2|\Z_{3,t}^*) = \sum_sL_b(\Z_{2,s}-\z_2)L_b(\Z_{3,s}-\Z_{3,t}^*)/\sum_sL_b(\Z_{3,s}-\Z_{3,t}^*)\), respectively.
 
@@ -1129,7 +1130,7 @@ Tjøstheim, Dag, and Karl Ove Hufthammer. 2013. ``Local Gaussian Correlation: A 
 Van den Bos, Adriaan. 2007. \emph{Parameter Estimation for Scientists and Engineers}. John Wiley \& Sons.
 
 \leavevmode\hypertarget{ref-wang2017characteristic}{}%
-Wang, Xia, and Yongmiao Hong. 2017. ``Characteristic Function Based Testing for Conditional Independence: A Nonparametric Regression Approach.'' \emph{Econometric Theory}, 1--35.
+Wang, Xia, and Yongmiao Hong. 2018. ``Characteristic Function Based Testing for Conditional Independence: A Nonparametric Regression Approach.'' \emph{Econometric Theory} 34 (4): 815--49.
 
 \leavevmode\hypertarget{ref-yahoo}{}%
 Yahoo Finance. 2018. \emph{Accessed June 2018}.

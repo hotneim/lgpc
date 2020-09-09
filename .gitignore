@@ -1,2 +1,4 @@
 *.log
 .Rhistory
+*.bak
+*.sav

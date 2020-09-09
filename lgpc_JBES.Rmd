@@ -1,6 +1,6 @@
 ---
 title: "The locally Gaussian partial correlation"
-author: Håkon Otneim^[Corresponding author. Department of Business and Management Science, NHH Norwegian School of Economics. Helleveien 30, 5045 Bergen, Norway. \texttt{hakon.otneim@nhh.no}] and Dag Tjøstheim^[University of Bergen]
+author: Håkon Otneim^[Corresponding author. Department of Business and Management Science, NHH Norwegian School of Economics. Helleveien 30, 5045 Bergen, Norway. \texttt{hakon.otneim@nhh.no}] and Dag Tjøstheim^[University of Bergen \newline {Acknowledgements:} The authors gratefully acknowledge the input of an associate editor as well as two anonymous referees, whose comments have greatly improved this paper.]
 output: 
   bookdown::pdf_document2:
       dev: tikz
@@ -30,9 +30,9 @@ The local view gives much more flexibility. It allows the conditional dependence
 
 The local approach has been shown to be advantageous in other areas of statistics, such as the measurement of nonlinear dependence, density estimation and spectral analysis, see for instance @tjostheim2013local, @otneim2017locally and @jordanger2017nonlinear. The present paper, then, represents the first attempt to model conditional dependence locally. There are several other approaches to modelling conditional dependence and testing for conditional independence in the non-Gaussian case in the literature. For the most part, they revolve around test statistics in conditional independence tests. Such statistics are usually based on measures of distance between some property of the sample and the corresponding property of the population under the null hypothesis of conditional independence. As a consequence, the  conditional dependence measures are not always easy to interpret, and can, as mentioned above, not distinguish between negative and positive conditional dependence. We present a comprehensive set of references to this literature in Section \@ref(chap:testing). 
 
-Definitions and properties are presented in Section \@ref(chap:conditional), whereas estimation is covered in Section \@ref(chap:estimation). Two examples illustrating the strengths of our approach are given in Section \@ref(chap:example). Section \@ref(chap:testing) gives a brief glimpse of the potential in testing.
+Definitions and properties are presented in Section \@ref(chap:conditional), whereas estimation is covered in Section \@ref(chap:estimation). Two examples illustrating the strengths of our approach are given in Section \@ref(chap:example). Section \@ref(chap:testing) gives a brief account of the potential in testing.
 
-An integral part of our article is the online supplement. It deals with a number of issues complementing the treatment in the main paper. Among them are more examples, extensions of the main concept to more general situations, precise formulations of some theoretical results with proofs, as well as discussions of Pitman efficiency for testing and validity of the use of the bootstrap.
+An integral part of our article is the online supplement. It deals with a number of issues complementing the treatment in the main paper. Among them are more examples, extensions of the main concept to more general situations, precise formulations of some theoretical results with proofs, as well as discussions of local asymptotic power and the Pitman criterion for testing and validity of the use of the bootstrap.
 
 # THE LOCAL GAUSSIAN PARTIAL CORRELATION {#chap:conditional}
 
@@ -77,15 +77,15 @@ The transformation enables us to simplify the local Gaussian approximation \@ref
 f_{\Z}(\z) = \psi(\z, R(\z)) = \frac{1}{|2\pi\R(\z)|^{1/2}}\exp\left\{-\frac{1}{2}\z^T\R^{-1}(\z)\z\right\},
 (\#eq:lgdeapprox)
 \end{equation}  
-where, as in Otneim and Tjøstheim [-@otneim2017locally; -@otneim2017conditional] in a further simplified representation, we have fixed local means and standard deviations $\mu_j(\z) = 0$ and $\sigma_j^2(\z) = 1$, $j = 1,\ldots,p$, and where $\R(\z) = \{\rho_{jk}(\z)\}$ is the *local correlation matrix*.
+where, as in Otneim and Tjøstheim [-@otneim2017locally; -@otneim2017conditional] in a further simplified approximation, we have fixed local means and standard deviations $\mu_j(\z) = 0$ and $\sigma_j^2(\z) = 1$, $j = 1,\ldots,p$, and where $\R(\z) = \{\rho_{jk}(\z)\}$ is the *local correlation matrix*.
 
 In practice, we do not know $F_{j}$, but we can instead use the empirical distribution function 
-$$F_{j,n}(x) = \frac{1}{n-1}\sum_{i=1}^n 1\left(X_{ji} \leq x\right),$$
-where $1(\cdot)$ is the indicator function, $n$ is the number of observations, and $X_{ji}$ is the $i$th observation of $X_j$. This results in pseudo standard normal variables $Z_{j,n} = \Phi^{-1}(F_{j,n}(X_j))$. 
+$$\widehat F_{j}(x) = \frac{1}{n-1}\sum_{i=1}^n 1\left(X_{ji} \leq x\right),$$
+where $1(\cdot)$ is the indicator function, $n$ is the number of observations, and $X_{ji}$ is the $i$th observation of $X_j$. This results in pseudo standard normal variables $\widehat Z_{j} = \Phi^{-1}(\widehat F_{j}(X_j))$. 
 
-In the following, we will not always distinguish between $Z_j$ and $Z_{j,n}$. In fact, we conclude our asymptotic analysis in Section \@ref(chap:asymptotic) by showing that under certain technical conditions, the error made by estimating $\R(\z)$ using the empirically transformed variables $Z_{j,n}$, instead of $Z_j$, is smaller in the limit than the estimation error made when estimating the local correlations themselves.
+In the following, we will not always distinguish between $Z_j$ and $\widehat Z_{j}$. In fact, we conclude our asymptotic analysis in Section \@ref(chap:asymptotic) by showing that under certain technical conditions, the error made by estimating $\R(\z)$ using the empirically transformed variables $Z_{j,n}$, instead of $Z_j$, is smaller in the limit than the estimation error made when estimating the local correlations themselves.
 
-We will in this paper refer to $\X$ and its probability density function $f_{\X}$ as being on the \(x\)-scale, and to $\Z$ and its probability density function $f_{\Z}$ as being on the \(z\)-scale. For further discussion of the simplified $z$-representation we refer to @otneim2017locally.
+We will in this paper refer to $\X$ and its probability density function $f_{\X}$ as being on the \(x\)-scale, and to $\Z$ and its probability density function $f_{\Z}$ as being on the \(z\)-scale. For further discussion of the simplified $z$-approximation we refer to @otneim2017locally.
 
 Denote by $(\Zone, \Ztwo) = (\Z_1, \Z_2, \Z_3)$ the partitioning of $\Z$ corresponding to the partitioning $(\Xone, \Xtwo) = (\X_1, \X_2, \X_3)$ of $\X$. A natural definition of the *local* partial covariance matrix of $\Zone|\Ztwo$ is the local version of eq. \@ref(eq:matrixpartial).
 
@@ -106,7 +106,7 @@ which, if $\Ztwo = Z_3$ is scalar, reduces to
 (\#eq:scalardefinition)
 \end{equation}
 
-It is of course possible to introduce an LGPC $\alpha(\x)$ directly on the $x$-scale, but that representation is in many ways harder to handle both computationally and asymptotically. For a multivariate Gaussian distribution, we have that $\alpha_{\X}(\x) = \alpha_{\Z}(\z) = \alpha$. In the remainder of this paper, we write mainly in terms of the $z$-representation using the LGPC $\alpha(\z) = \alpha_{\Z}(\z)$, but when we write the local partial correlation between $X_1$ and $X_2$ given $\X_3 = \x_3$ at the point $(x_1,x_2,\x_3)$, this is simply $\alpha(\z)$ inserted with $z_j = \Phi^{-1}(F_{j}(x_j))$, $j=1,\ldots,p$.
+It is of course possible to introduce an LGPC $\alpha(\x)$ directly on the $x$-scale, but that representation is in many ways harder to handle both computationally and asymptotically. For a multivariate Gaussian distribution, we have that $\alpha_{\X}(\x) = \alpha_{\Z}(\z) = \alpha$. In the remainder of this paper, we write mainly in terms of the $z$-representation using the LGPC $\alpha(\z) = \alpha_{\Z}(\z)$, but when we write the local partial correlation between $X_1$ and $X_2$ given $\X_3 = \x_3$ at the point $(x_1,x_2,\x_3)$, this is simply $\alpha(\z)$ inserted $z_j = \Phi^{-1}(F_{j}(x_j))$, $j=1,\ldots,p$.
 
 In the more general case where $d_1 > 1$ and/or $d_2 > 1$ then $\fSigma_{12|3}(\z)$ is a $(d_1+d_2)\times (d_1+d_2)$ matrix that describes the non-linear conditional dependence among the variables in $\Zone = (\Z_1, \Z_2)$ given $\Ztwo = \Z_3$ (or alternatively $\Xone = (\X_1, \X_2)$ given $\Xtwo = \X_3$), which in particular can be used to analyze the conditional dependence between two *sets* of random variables having dimensions $d_1$ and $d_2$ respectively, given a third set of variables having dimension $d_3$. This case poses no conceptual challenges to our approach, but it requires a rather large investment in new notation, and does not lead to simple formulas like eq. \@ref(eq:scalardefinition). We will therefore, for the most part, focus on the local Gaussian partial correlation between two stochastic scalar variables in the remainder of this paper. We provide the complete description of the general multivariate case in Sections A.1 and A.2 of the online supplement.
 
@@ -244,7 +244,7 @@ Let $\{\Z_t\}_{t=1}^n$ be observations on the marginally standard normally distr
 
 Then, by writing $b_{n1} = b_{n2} = b_{n3} = b \rightarrow 0$ assuming they all converge to zero at the same rate, 
 \begin{equation}
-\sqrt{nb^5}\Mb^{-1/2}\Jb\left(\hfrho_n - \frho_0\right) \stackrel{d}{\rightarrow} \mathcal{N}(\bm{0}, \bm{I}),
+\sqrt{nb^3}\Mb^{-1/2}\Jb\left(\hfrho_n - \frho_0\right) \stackrel{d}{\rightarrow} \mathcal{N}(\bm{0}, \bm{I}),
 (\#eq:an3)
 \end{equation}
 where $\bm{I}$ is the $3\times3$ identity matrix,
@@ -284,7 +284,7 @@ Let $\{\Z\}_n$ be observations on the marginally standard normally distributed r
 
 Then, by letting $b_n^2$ (assuming identical convergence rates) mean the product $b_{nj}b_{nk}$ corresponding to the pairs of variables defining the components in $\frho$, -->
 \begin{equation}
-\sqrt{nb_n^2}\left(\hfrho(\z) - \frho_0(\z)\right) \stackrel{d}{\rightarrow} \mathcal{N}(\bm{0}, \fOmega),
+\sqrt{nb_n^2}\left(\hfrho(\z) - \frho_0(\z)\right) \stackrel{d}{\rightarrow} \mathcal{N}(\bm{0}, \fLambda),
 \label{eq:ot2018}
 \end{equation}
 <!--
@@ -301,7 +301,7 @@ where $\ell = 1,\ldots,p(p-1/2)$ runs over all pairs of variables, and $f_{\ell}
 
 \vspace{.5cm}
 
-For a proof, we refer to @otneim2017conditional.--> where the asymptotic covariance matrix $\fOmega$ is defined in an analogous way as in Theorem \@ref(thm:loccor3) There are two important differences between these two results, however. First of all, we have that the convergence rate in the simplified pairwise case is equal to the usual nonparametric rate of $1/(nb^2)^{1/2}$. This is because we estimate the local correlations one by one based on pairs of variables. The second difference is that the leading term of the asymptotic covariance matrix in Theorem 2 by @otneim2017conditional has a simple analytic expression that can be used to construct, for instance, confidence intervals. We refer to Section A.3 in the online supplement for further details regarding the limiting distribution of the LGPC as well conditions for consistency of the estimates.
+For a proof, we refer to @otneim2017conditional.--> where the asymptotic covariance matrix $\fLambda$ is defined as $\fSigma$ in Theorem 2 of @otneim2017conditional. There are two important differences compared to Theorem \@ref(thm:loccor3), however. First of all, we have that the convergence rate in the simplified pairwise case is equal to the usual nonparametric rate of $1/(nb^2)^{1/2}$. This is because we estimate the local correlations one by one based on pairs of variables. The second difference is that the leading term of the asymptotic covariance matrix in Theorem 2 by @otneim2017conditional has a simple analytic expression that can be used to construct, for instance, confidence intervals. We refer to Section A.3 in the online supplement for further details regarding the limiting distribution of the LGPC as well conditions for consistency of the estimates.
 
 We can now calculate the limiting distribution of the LGPC by means of the delta method. Denote by $g: \mathbb{R}^{p(p-1)/2} \rightarrow \mathbb{R}$ the translation \@ref(eq:definition) from the vector of local correlations between the components in $\Z$ (or, equivalently, $\X$) to the local partial correlation $\alpha(\z)$ between $Z_1$ and $Z_2$ given $Z_3, \ldots, Z_p$. From the expression of our estimate \@ref(eq:estimate) we have that $\halpha(\z) = g(\hfrho(\z))$, so we use the delta method to see that 
 
@@ -309,7 +309,7 @@ We can now calculate the limiting distribution of the LGPC by means of the delta
 \sqrt{nb_n^m}\left(\halpha(\z) - \alpha(\z)\right) \stackrel{d}{\rightarrow} \mathcal{N}\left(0, \nabla g(\frho)^T\fLambda\nabla g(\frho)\right),
 (\#eq:limitlgpc)
 \end{equation}
-where $m$ is equal to 2 or 5, and $\fLambda$ is either equal to the leading term of $\Jb^{-1}\Mb(\Jb^{-1})^T$, or $\fOmega$ in \@ref(eq:ot2018), depending on whether we use the full trivariate locally Gaussian fit described in Section \@ref(chap:trivariate-full) or the sequentially pairwise simplification described in Section \@ref(chap:bivariate). In any case, it is only a matter of basic differentiation to work out an expression for $\nabla g(\cdot)$, and this task has been deferred to Section C of the online supplement in the case where $d_1 = d_2 = 1$.
+where $m$ is equal to 2 or 5, and $\fLambda$ is either equal to the leading term of $\Jb^{-1}\Mb(\Jb^{-1})^T$, or $\fLambda$ in \@ref(eq:ot2018), depending on whether we use the full trivariate locally Gaussian fit described in Section \@ref(chap:trivariate-full) or the sequentially pairwise simplification described in Section \@ref(chap:bivariate). In any case, it is only a matter of basic differentiation to work out an expression for $\nabla g(\cdot)$, and this task has been deferred to Section C of the online supplement in the case where $d_1 = d_2 = 1$.
 
 Finally, we present the limiting distribution of the LGPC between $Z_1$ and $Z_2$ given $Z_3, \ldots, Z_p$ when the components in $\Z = (Z_1, \ldots, Z_p)$ are replaced by marginally standard normal *pseudo-observations* as defined in equation \@ref(eq:pseudoobservations). The following result ensures that Theorems \@ref(thm:loccor3) and Theorem 2 by @otneim2017conditional, and thus eq. \@ref(eq:limitlgpc), still holds.
 
@@ -377,7 +377,7 @@ Denote by $R_{1,t}$ the log-returns on a value-weighted portfolio consisting of 
 \begin{equation}
 R_{1,t} \perp R_{2, t-1} \,\,|\,\, R_{1,t-1},
 \end{equation}
-which we may test formally using the approaches described in the following section or the references therein. Let us rather concentrate on *describing* this conditional dependence relationship by estimating the local Gaussian partial correlation between $R_{1,t}$ and $R_{2,t-1}$ given a few different values of $R_{2,t-1}$, which gives considerable more information than a single $p$-value of a test. We collect daily observations on Oslo Stock Exchange^[Thanks to \emph{Børsprosjektet (The Stock Exchange Project)} at the Norwegian School of Economics for providing the data.] from 1 January 2018 until 31 December 2019. In Figure \ref{fig:order1} we see the estimated LGPC along the diagonal $R_{1,t} = R_{2,t-1}$ for three different values $R_{1,t-1} = -0.02, 0$ and $0.02$, along with their block-bootstrapped 95% confidence bands. The constant $\alpha(\z) = 0$ is indicated as a dotted line.
+which we may test formally using the approaches described in the following section or the references therein. Let us rather concentrate on *describing* this conditional dependence relationship by estimating the local Gaussian partial correlation between $R_{1,t}$ and $R_{2,t-1}$ given a few different values of $R_{2,t-1}$, which gives considerable more information than a single $p$-value of a test. We collect daily observations on Oslo Stock Exchange^[Thanks to \emph{Børsprosjektet (The Stock Exchange Project)} at the Norwegian School of Economics for providing the data.] from 1 January 2018 until 31 December 2019. In Figure \ref{fig:order1} we see the estimated LGPC along the diagonal $R_{1,t} = R_{2,t-1}$ for three different values $R_{1,t-1} = -0.02, 0$ and $0.02$, along with their block-bootstrapped 95% confidence intervals. The constant $\alpha(\z) = 0$ is indicated as a dotted line.
 
 \begin{figure}[t]
 \centering
@@ -386,7 +386,7 @@ which we may test formally using the approaches described in the following secti
 \label{fig:order1}
 \end{figure}
 
-One could perhaps make the argument that $R_{1,t}$ and $R_{2,t-1}$ seem to be somewhat positively dependent in the right half of the graph for *small* values of the conditioning variable $R_{1,t-1}$. Roughly translated to this particular situation this means that if the large-firm portfolio gives a negative return on day $t-1$, then its value on day $t$ depend on the performance small-firm portfolio on day $t-1$ in a nonlinear and non-Gaussian way that is characterized by positive dependence in the first quadrant. The evidence displayed in Figure \ref{fig:order1} is quite weak, however, because the confidence bands include zero in most of the sample space.
+One could perhaps make the argument that $R_{1,t}$ and $R_{2,t-1}$ seem to be somewhat positively dependent in the right half of the graph for *small* values of the conditioning variable $R_{1,t-1}$. Roughly translated to this particular situation this means that if the large-firm portfolio gives a negative return on day $t-1$, then its value on day $t$ depend on the performance small-firm portfolio on day $t-1$ in a nonlinear and non-Gaussian way that is characterized by positive dependence in the first quadrant. The evidence displayed in Figure \ref{fig:order1} is quite weak, however, because the confidence intervals include zero in most of the sample space.
 
 @fran:moug:vale:2010 go on to analyze if there is Granger causality from small to big firms in the US data if another lag is taken into account, which in general means finding evidence against the hypothesis
 
@@ -423,13 +423,10 @@ On the other hand, we have to pay a price when imposing structure on the depende
 
 ## A test for conditional independence based on the LGPC {#thetest}
 
-We construct a test statistic for testing 
-
-$$\textrm{H}_0: X_1 \perp X_2 \,\, | \,\, \X_3$$
-or, equivalently, a test statistic in terms of the marginally Gaussian pseudo observations,
+We construct a test statistic for testing $\textrm{H}_0: X_1 \perp X_2 \,\, | \,\, \X_3,$ or, equivalently, a test statistic in terms of the marginally Gaussian pseudo observations,
 
 \begin{equation}
-\textrm{H}_0: Z_1 \perp Z_2 \,\, | \,\, \Z_3
+\textrm{H}_0: Z_1 \perp Z_2 \,\, | \,\, \Z_3,
 (\#eq:ci-test)
 \end{equation}
 by aggregating our local measure of dependence over the sample space of $\X$ (or $\Z$). A natural test statistic on the $z$-scale is
@@ -440,7 +437,7 @@ T_{n,b} = \int_S h\left( \widehat \alpha_b(\z)  \right) \di F_n(\z),
 \end{equation}
 where $h(\cdot)$ is a real-valued function that is typically even and non-negative for most standard applications, and $S \subseteq \mathbb{R}^p$ is an integration area that can be altered in order to focus the test to specific portions of the sample space. Standard laws of large numbers ensure that, under regularity conditions, see Theorem F.1 of the supplement, $T_{n,b}$ converges in probability towards its population value $$T = \int_S h\left(\alpha(\z)\right) \di F(\z).$$
 
-Departures from conditional independence lead to large values of $T_{n,b}$ that, if larger than a critical value, leads to the rejection of \@ref(eq:ci-test). Asymptotically, one might expect that approximate $p$-values for our test can be extracted from the limiting distribution of the test statistic $T_{n,b}$, which we derive in the online supplement Section F. The limiting asymptotic distribution of $T_{n,b}-T$ is given in Theorem F.2 for the 1-parameter general pairwise case, whereas Theorem F.3 treats the 3-coordinate (3-parameter) case with $d_1=d_2=d_3=1$. It is interesting to note from the discussion immediately following the proofs of these theorems that the convergence rate in the first case is $n^{-1/2}$, and in the second case is $\left(nb^2\right)^{-1/2}$. This means that the tests are asymptotically able to pick up alternatives approaching the null hypothesis of conditional independence at these rates. This is measured by the Pitman criterion. A discussion of the Pitman criterion for other tests of conditional independence is given on pages 11--12 immediately following Theorem 2 of @wang2017characteristic. The rate $n^{-1/2}b^{-d_3/4}$ of Wang and Hong compares favorable with other tests. The rate $n^{-1/2}$ obtained by us must be interpreted with caution, however, because it is based on a pairwise model that is more restrictive. We go into more detail regarding asymptotic power and Pitman efficiency in Section G of the online supplement. 
+Departures from conditional independence lead to large values of $T_{n,b}$ that, if larger than a critical value, leads to the rejection of \@ref(eq:ci-test). Asymptotically, one might expect that approximate $p$-values for our test can be extracted from the limiting distribution of the test statistic $T_{n,b}$, which we derive in the online supplement Section F. The limiting asymptotic distribution of $T_{n,b}-T$ is given in Theorem F.2 for the 1-parameter general pairwise case, whereas Theorem F.3 treats the 3-coordinate (3-parameter) case with $d_1=d_2=d_3=1$. It is interesting to note from the discussion immediately following the proofs of these theorems that the convergence rate in the first case is $n^{-1/2}$, and in the second case is $\left(nb^2\right)^{-1/2}$. This means that the tests are asymptotically able to pick up alternatives approaching the null hypothesis of conditional independence at these rates. This is measured by the Pitman criterion. A discussion of the Pitman criterion for other tests of conditional independence is given on pages 11--12 immediately following Theorem 2 of @wang2017characteristic. The rate $n^{-1/2}b^{-d_3/4}$ of Wang and Hong compares favorable with other tests. The rate $n^{-1/2}$ obtained by us must be interpreted with caution, however, because it is based on a pairwise model that is more restrictive. We go into more detail regarding local asymptotic power and the Pitman criterion in Section G of the online supplement. 
 
 Several authors, for example @terasvirta2010modelling, have noted, however, that asymptotic analysis of nonparametric (or semiparametric) test statistics on the form \@ref(eq:teststatistic) tends to be too crude for finite sample applications. We have therefore approximated the distribution of $T_{n,b}$ using the bootstrap. The validity of the bootstrap in such contexts has been examined by @lacal2018estimating and we adapt their arguments to our situation in the online supplement, Section H.
 
@@ -483,7 +480,7 @@ The first set of simulation results are collected from @su2008nonparametric: In 
 
 \input{tables/power_table_dim3_n100_short}
 
-Finally, we include results from simulations using our new test based on the LGPC, using the trivariate specification defined in Section \@ref(chap:trivariate-full), for two different levels of smoothing, and include them in Table \ref{tab:n100}. We highlight the new results in grey to indicate that they, as opposed to all the other numbers, have not appeared in the literature before. Also, to the best of our knowledge, these results have not been compared simultaneously before.
+Finally, we include results from simulations using our new test based on the LGPC, using the trivariate specification defined in Section \@ref(chap:trivariate-full), for two different levels of smoothing, and include them in Table \ref{tab:n100}. We highlight the new results in grey to indicate that they, as opposed to all the other numbers, have not appeared in the literature before. Also, to the best of our knowledge, these results have not been compared simultaneously before. 
 
 We see in Table \ref{tab:n100} that our test has the correct level and is quite powerful against all alternative specifications of conditional dependence, in the additive models 5 and 6, as well as the remaining examples 7 to 10, that are more multiplicative in nature. 
 
@@ -499,10 +496,6 @@ For 3 scalar variables $X_1, X_2, X_3$ a full trivariate analysis depending on a
 
 Both the full trivariate approach and the pairwise simplification have been mainly analyzed at the $z$-scale using the transformed variables $\Z = \Phi^{-1}(F(\X))$. The corresponding LGPC $\alpha(\z)$ is invariant to monotone transformations of the marginals. The LGPC $\alpha(\x)$ on the $x$-scale can be obtained from $\alpha(\z)$ by taking $\x = F^{-1}(\Phi(\z))$, and it is in general different from $\alpha(\z)$ and is not invariant to monotone transformations of the marginals. An analogue is the different transformation properties of the Pearson correlation and the copula structure in describing joint dependence. For multivariate Gaussian variables, $\alpha(\x) \equiv \alpha(\z) \equiv \alpha$, which is the ordinary global partial correlation. 
 
-There is a potential for much further work. A next natural step may be structural equations as used in network analysis and Pearl-type causality [@pearl2000causality], and ultimately further exploring the relationship or lack of relationship between that type of causality and Granger causality.
-
-All methods presented in this paper have been implemented in the R programming language [@r], and is available in the package **lg** [@otneim2019lg]. In addition, we provide code and data for easy replication of the results presented here in an online appendix.
-
-**Acknowledgements.** The authors gratefully acknowledge the input of an associate editor as well as two anonymuos referees, whose comments have greatly improved this paper.
+There is a potential for much further work. A next natural step may be structural equations as used in network analysis and Pearl-type causality [@pearl2000causality], and ultimately further exploring the relationship or lack of relationship between that type of causality and Granger causality. All methods presented in this paper have been implemented in the R programming language [@r], and is available in the package **lg** [@otneim2019lg]. In addition, we provide code and data for easy replication of the results presented here in an online appendix.
 
 # REFERENCES
