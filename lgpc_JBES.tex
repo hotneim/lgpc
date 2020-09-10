@@ -475,9 +475,9 @@ We will in this section provide some demonstrations on how the estimated LGPC ca
 First, we provide some reference pictures from the simplest situation imaginable. Let \(X_1\), \(X_2\) and \(X_3\) be independent standard (and thus also jointly) normal variables. Since \(X_1\) is conditionally independent from \(X_2\) given \(X_3\) (written \(X_1 \perp X_2 | X_3\)) in this particular case, we also know from property 3 in Section 2.2 that the LGPC between \(X_1\) and \(X_2\) is zero everywhere.
 
 \begin{figure}
-    \subfloat[$n = $ 100\label{fig:gaussian-example-plots1}]{\includegraphics[width=0.31\linewidth]{figures/gaussian-example-plots-1} }
-    \subfloat[$n = $ 500\label{fig:gaussian-example-plots2}]{\includegraphics[width=0.31\linewidth]{figures/gaussian-example-plots-2} }
-    \subfloat[$n = $ 2000\label{fig:gaussian-example-plots3}]{\includegraphics[width=0.31\linewidth]{figures/gaussian-example-plots-3} }
+    \subfloat[$n = $ 100\label{fig:gaussian-example-plots1}]{\includegraphics[width=0.31\linewidth]{rcode_and_data/figures/gaussian-example-plots-1} }
+    \subfloat[$n = $ 500\label{fig:gaussian-example-plots2}]{\includegraphics[width=0.31\linewidth]{rcode_and_data/figures/gaussian-example-plots-2} }
+    \subfloat[$n = $ 2000\label{fig:gaussian-example-plots3}]{\includegraphics[width=0.31\linewidth]{rcode_and_data/figures/gaussian-example-plots-3} }
     \caption{Estimated local Gaussian partial correlation between $X_1$ and $X_2$ given $X_3 = 0$, where $(X_1, X_2, X_3)$ is a jointly standard normally distributed vector. The fully trivariate model of Section 3.1.1 is used.}\label{fig:gaussian-example-plots}
 \end{figure}
 
@@ -488,10 +488,10 @@ where \(\widehat f_{\bb}^{(-t)}(\Z_t)\) is the estimated local Gaussian density 
 As expected, \(\widehat\alpha(\x) = \widehat\alpha(\z)\) is close to zero in all three plots in Figure \ref{fig:gaussian-example-plots} and a significance test carried out as in Section \ref{chap:testing} does not reject conditional independence at any reasonable significance level.
 
 \begin{figure}[p]
-    \subfloat[Observed pairs $(X_1, X_2)$ from the conditionally \newline Gaussian model.\label{fig:simex2-plots1}]{\includegraphics[width=0.49\linewidth]{figures/simex2-plots-1} }
-    \subfloat[The estimated LGPC between $X_1$ and $X_2$ given $\rho = -0.9$.\label{fig:simex2-plots2}]{\includegraphics[width=0.49\linewidth]{figures/simex2-plots-2} }\newline
-    \subfloat[The estimated LGPC between $X_1$ and $X_2$ \newline  given $\rho = 0$\label{fig:simex2-plots3}]{\includegraphics[width=0.49\linewidth]{figures/simex2-plots-3} }
-    \subfloat[The estimated LGPC between $X_1$ and $X_2$ \newline given $\rho = 0.9$\label{fig:simex2-plots4}]{\includegraphics[width=0.49\linewidth]{figures/simex2-plots-4} }
+    \subfloat[Observed pairs $(X_1, X_2)$ from the conditionally \newline Gaussian model.\label{fig:simex2-plots1}]{\includegraphics[width=0.49\linewidth]{rcode_and_data/figures/simex2-plots-1} }
+    \subfloat[The estimated LGPC between $X_1$ and $X_2$ given $\rho = -0.9$.\label{fig:simex2-plots2}]{\includegraphics[width=0.49\linewidth]{rcode_and_data/figures/simex2-plots-2} }\newline
+    \subfloat[The estimated LGPC between $X_1$ and $X_2$ \newline  given $\rho = 0$\label{fig:simex2-plots3}]{\includegraphics[width=0.49\linewidth]{rcode_and_data/figures/simex2-plots-3} }
+    \subfloat[The estimated LGPC between $X_1$ and $X_2$ \newline given $\rho = 0.9$\label{fig:simex2-plots4}]{\includegraphics[width=0.49\linewidth]{rcode_and_data/figures/simex2-plots-4} }
     \caption{The conditionally Gaussian model}\label{fig:simex2-plots}
 \end{figure}
 
@@ -526,7 +526,7 @@ which we may test formally using the approaches described in the following secti
 
 \begin{figure}[t]
 \centering
-\includegraphics{figures/granger-order1}
+\includegraphics{rcode_and_data/figures/granger-order1}
 \caption{The estimated LGPC between $R_{1,t}$ and $R_{2,t-1}$ given $R_{1,t-1}$ along the diagonal of the sample space, for three values of the conditioning variable}
 \label{fig:order1}
 \end{figure}
@@ -543,7 +543,7 @@ departures from which can be quantified and tested for in a linear fashion using
 
 \begin{figure}[t]
 \centering
-\includegraphics{figures/granger-order2}
+\includegraphics{rcode_and_data/figures/granger-order2}
 \caption{The estimated local Gaussian partial correlations for the three variable pairs in $(R_{1,t}, R_{2,t-1}, R_{2, t-2})$ given $(R_{1, t-1}, R_{1, t-2})$ estimated along the diagonal in the sample space. The first two plots represent the pairs $(R_{1,t}, R_{2,t-1})$ and $(R_{1,t}, R_{2,t-2})$ which are of particular interest when analyzing the conditional dependence relationship \eqref{eq:order2}. The legend in Figure \ref{fig:order1} is still valid, except that the solid line now represents the LGPC conditional on \emph{both} $R_{1, t-1}$ and $R_{1, t-2}$ being equal to $-0.02$.}
 \label{fig:order2}
 \end{figure}

@@ -953,25 +953,25 @@ In the \(\{\Z_{1,t}^*,\Z_{2,t}^*,\Z_{3,t}^*\}\)-framework we obtain an estimate 
 
 We will in this section provide two more demonstrations on how the estimated LGPC can be used to reveal nonlinear departures from conditional independence and to measure that conditional dependence. The ordinary partial correlation coefficient fully characterizes conditional dependence between jointly Gaussian variables. It is not hard, though, to construct examples in which strong nonlinear relationships remain completely undetected by the partial correlation. Consider the following structural equation;
 
-\begin{figure}[t]
-    \subfloat[Estimated local Gaussian partial correlation \newline between $X_1$ and $X_2$ given $X_3=0$ in the \newline structural model $X_2 = X_1^2 + X_3.$ The color scale \newline goes from $-1$ (dark blue) to $+1$ (dark red).\label{fig:structural-plot1}]{\includegraphics[width=0.49\linewidth]{figures/structural-plot-1} }
-    \subfloat[The estimated LGPC along the curve $X_2 = X_1^2$ with 95\% confidence band.\label{fig:structural-plot2}]{\includegraphics[width=0.49\linewidth]{figures/structural-plot-2} }
-    \caption{The structural model. The fully trivariate model of Section 3.1.1 is used.}\label{fig:structural-plot}
-\end{figure}
-
 \begin{equation}
 X_2 = X_1^2 + X_3,
 \label{eq:structural}
 \end{equation}
-where we observe all components in \((X_1, X_2, X_3)\). There is, obviously, a strong dependence between \(X_1\) and \(X_2\), and furthermore, this dependence is deterministic when conditioning on \(X_3 = x_3\). It is, however, well known that \(X_1\) and \(X_1^2 + x_3\) are uncorrelated if \(\E(X_1) = \E(X_1^3) = 0\), but the LGPC easily reveals conditional dependence between \(X_1\) and \(X_2\) in this case. Let us generate \(n = 500\) independent observations each from \(X_1 \sim \mathcal{N}(0,1)\) and \(X_3 \sim \mathcal{N}(0,1)\) and calculate \(X_2\) by \eqref{eq:structural}. The sample partial correlation between \(X_1\) and \(X_2\) is \(-0.037\) in this case, but the LGPC, which in this case is calculated using the simplified pairwise structure defined in Section 3.1.2, displayed in Figure \ref{fig:structural-plot1}, indicates strong departures from conditional independence on the plane defined by \(X_3 = 0\). Indeed, we identify a region of \emph{negative conditional relationship} on the left hand side of the plot, which makes good sense because small values of \(X_2\) is typically observed together with large values of \(X_1\) and vice versa. The opposite phenomenon is clearly visible in the right hand half of the plot. In Figure \ref{fig:structural-plot2} we have plotted the estimated LGPC along the curve \(X_2 = X_1^2\), along with an asymptotic 95\% confidence band. The full trivariate fit presented in Section 3.1.1 gives a very similar picture.
+where we observe all components in \((X_1, X_2, X_3)\). There is, obviously, a strong dependence between \(X_1\) and \(X_2\), and furthermore, this dependence is deterministic when conditioning on \(X_3 = x_3\). It is, however, well known that \(X_1\) and \(X_1^2 + x_3\) are uncorrelated if \(\E(X_1) = \E(X_1^3) = 0\), but the LGPC easily reveals conditional dependence between \(X_1\) and \(X_2\) in this case. Let us generate \(n = 500\) independent observations each from \(X_1 \sim \mathcal{N}(0,1)\) and \(X_3 \sim \mathcal{N}(0,1)\) and calculate \(X_2\) by \eqref{eq:structural}. The sample partial correlation between \(X_1\) and \(X_2\) is \(-0.037\) in this case, but the LGPC, which in this case is calculated using the simplified pairwise structure defined in Section 3.1.2, displayed in Figure \ref{fig:structural-plot1}, indicates strong departures from conditional independence on the plane defined by \(X_3 = 0\). Indeed, we identify a region of \emph{negative conditional relationship} on the left hand side of the plot, which makes good sense because small values of \(X_2\) is typically observed together with large values of \(X_1\) and vice versa. The opposite phenomenon is clearly visible in the right hand half of the plot. In Figure \ref{fig:structural-plot2} we have plotted the estimated LGPC along the curve \(X_2 = X_1^2\). The full trivariate fit presented in Section 3.1.1 gives a very similar picture.
 
 This points to an important feature of the LGPC, as we also saw in one of the simulated examples in the main article: It is able to \emph{distinguish between positive and negative conditional relationships}, which, to our knowledge, has until now not been possible beyond the linear and jointly Gaussian setting using the ordinary partial correlation.
 
+\begin{figure}[t]
+    \subfloat[Estimated local Gaussian partial correlation \newline between $X_1$ and $X_2$ given $X_3=0$ in the \newline structural model $X_2 = X_1^2 + X_3.$ The color scale \newline goes from $-1$ (dark blue) to $+1$ (dark red).\label{fig:structural-plot1}]{\includegraphics[width=0.49\linewidth]{rcode_and_data/figures/structural-plot-1} }
+    \subfloat[The estimated LGPC along the curve $X_2 = X_1^2$.\label{fig:structural-plot2}]{\includegraphics[width=0.49\linewidth]{rcode_and_data/figures/structural-plot-2} }
+    \caption{The structural model.}\label{fig:structural-plot}
+\end{figure}
+
 \begin{figure}
-\subfloat[Local partial dependence map of $V_t^*$ vs. $R_{t-1}$ \newline on the plane defined by $V_{t-1}^* = 0$\label{fig:realplots1}]{\includegraphics[width=0.49\linewidth]{figures/realplots-1} }
-\subfloat[Local partial dependence map of $R_t$ vs. $V_{t-1}^*$ \newline on the plane defined by $R_{t-1} = 0$\label{fig:realplots2}]{\includegraphics[width=0.49\linewidth]{figures/realplots-2} }\newline
-\subfloat[Local partial dependence map of $R_t$ vs. $V_{t-1}^*$ \newline on the  plane defined by $R_{t-1} = -0.05$\label{fig:realplots3}]{\includegraphics[width=0.49\linewidth]{figures/realplots-3} }
-\subfloat[Local partial dependence map of $R_t$ vs. $V_{t-1}^*$ \newline on the  plane defined by $R_{t-1} = 0.05$\label{fig:realplots4}]{\includegraphics[width=0.49\linewidth]{figures/realplots-4} }
+\subfloat[Local partial dependence map of $V_t^*$ vs. $R_{t-1}$ \newline on the plane defined by $V_{t-1}^* = 0$\label{fig:realplots1}]{\includegraphics[width=0.49\linewidth]{rcode_and_data/figures/realplots-1} }
+\subfloat[Local partial dependence map of $R_t$ vs. $V_{t-1}^*$ \newline on the plane defined by $R_{t-1} = 0$\label{fig:realplots2}]{\includegraphics[width=0.49\linewidth]{rcode_and_data/figures/realplots-2} }\newline
+\subfloat[Local partial dependence map of $R_t$ vs. $V_{t-1}^*$ \newline on the  plane defined by $R_{t-1} = -0.05$\label{fig:realplots3}]{\includegraphics[width=0.49\linewidth]{rcode_and_data/figures/realplots-3} }
+\subfloat[Local partial dependence map of $R_t$ vs. $V_{t-1}^*$ \newline on the  plane defined by $R_{t-1} = 0.05$\label{fig:realplots4}]{\includegraphics[width=0.49\linewidth]{rcode_and_data/figures/realplots-4} }
 \caption{Local partial dependence maps for the S\&P 500 data}\label{fig:realplots}
 \end{figure}
 
