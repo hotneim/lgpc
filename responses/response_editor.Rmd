@@ -10,14 +10,21 @@ output:
           in_header: latex_preamble_supp.tex
 classoption: letterpaper
 geometry: margin = 1in
-bibliography: "bibliography.bib"
 biblio-style: "apalike"
 link-citations: yes
 indent: yes
 fontsize: 12pt
 ---
 
-\noindent \textbf{Letter to the editor.}
+
+
+\noindent \textbf{Letter to the Editor.}
+
+\vspace{1cm}
+
+\noindent Professor Jianqing Fan
+
+\noindent Editor JBES
 
 \vspace{1cm}
 
@@ -27,17 +34,17 @@ fontsize: 12pt
 
 We refer to your letter of 12 February 2020 where we are invited to revise our manuscript JBES-P-2019-0538, "The locally Gaussian partial correlation".
 
-We grateful for the opportunity to revise. Enclosed please find our revised version, including supplementary material to be posted online, as well as individual responses to the Associate and two referees.
+We grateful for the opportunity to revise. Enclosed please find our revised version, including supplementary material to be posted online, as well as individual responses to the Associate Editor and two referees.
 
 We apologize for the somewhat long time taken to complete the revision. This is due to the implementations of a rather large number of changes prompted by the detailed and constructive comments of reviewers. We thank them for their positive attitude to our paper and for reading the paper so carefully.
 
 We believe that we have taken all of the queries of the referees and the Associate Editor into account, and in the accompanying files we have made point by point responses. As a result of the input received we think that the paper is much improved. Here are the major changes and improvements:
 
-The local Gaussian partial correlation (LPGC) has been introduced and analyzed in a general vector case looking at the local joint conditional distribution of two random vectors $\X_1$ and $\X_2$ of dimension $d_1$ and $d_2$, respectively, given a third vector $\X_3$ of dimension $d_3$. An example concerning Granger causality testing where $\X_1$ and $\X_2$ are not scalars has been added. We have added asymptotic theory for the test statistic, theory on the validity of the bootstrap for the test statistic and for the estimation of LGPC. We have also derived local power and compared with other test statistics.
+The local Gaussian partial correlation (LPGC) has been introduced and analyzed in a general vector case looking at the local joint conditional distribution of two random vectors $\X_1$ and $\X_2$ of dimension $d_1$ and $d_2$, respectively, given a third vector $\X_3$ of dimension $d_3$. An example concerning Granger causality testing where $\X_1$ and $\X_2$ are not scalars has been added. We have added asymptotic theory for the test statistic, theory on the validity of the bootstrap for the test statistic, and for the estimation of LGPC. We have also derived local power and compared with other test statistics.
 
-For reasons of space most of these changes have been included in a Supplement intended to be available online. This has made it possible for us to keep the length of the main article at 35 pages, as advised by the Editor.
+For reasons of space most of these changes have been included in a supplement intended to be available online. This has made it possible for us to keep the length of the main article at 35 pages, as advised by the Editor.
 
-In addition there are numerous other changes directly related to the comments of the referees and the AE. In particular,  we have tried to make it more clear that our paper is not just concerned with presenting just another test of conditional independence. But rather it is concerned with the introduction of a new framework for measuring conditional dependence, and that this framework reduces to the ordinary partial correlation coefficient in the Gaussian case.
+In addition there are numerous other changes directly related to the comments of the referees and the Associate Editor. In particular,  we have tried to make it more clear that our paper is not just concerned with presenting just another test of conditional independence. But rather it is concerned with the introduction of a new framework for measuring conditional dependence, where this framework reduces to the ordinary partial correlation coefficient in the Gaussian case.
 
 We hope that you find the present version acceptable for JBES.
 
