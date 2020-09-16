@@ -221,7 +221,7 @@ where all running variables and samples are bivariate subsets corresponding to t
 
 ## Asymptotic theory {#chap:asymptotic}
 
-Equations \@ref(eq:matrixlocalpartial), \@ref(eq:definition) and their empirical counterparts \@ref(eq:localpartialcov) and \@ref(eq:estimate) demonstrate clearly that the LGPC is nothing more than a deterministic function of the local correlation matrix, in the same way as the ordinary partial correlation is a function of the ordinary correlation matrix. The asymptotic behavior of $\halpha(\z)$ can thus be derived directly from the asymptotic behavior of $\hR(\z)$, which, for the most part, has been established in earlier works, see e.g. @tjostheim2013local and Otneim and Tjøstheim [-@otneim2017locally; -@otneim2017conditional]. Some key results follow below, and we refer to the supplementary material, Sections B--D for proofs of the asymptotic distributional results in this subsection, and to Section A.3 for a discussion of more general situations and for a result on consistency.
+Equations \@ref(eq:matrixlocalpartial), \@ref(eq:definition) and their empirical counterparts \@ref(eq:localpartialcov) and \@ref(eq:estimate) demonstrate clearly that the LGPC is nothing more than a deterministic function of the local correlation matrix, in the same way as the ordinary partial correlation is a function of the ordinary correlation matrix. The asymptotic behavior of $\halpha(\z)$ can thus be derived directly from the asymptotic behavior of $\hR(\z)$, which, for the most part, has been established in earlier works, see e.g. @tjostheim2013local and Otneim and Tjøstheim [-@otneim2017locally; -@otneim2017conditional]. Some key results follow below, and we refer to the supplementary material, Sections B--D, for proofs of the asymptotic distributional results in this subsection, and to Section A.3 for a discussion of more general situations and for a result on consistency.
 
 We start by assuming that the marginal distribution functions $F_1, \ldots, F_p$ are known, and then state two results on the joint asymptotic normality of the estimated local correlation matrix $\hR(\z)$ under a mixing condition. We will then apply the delta method in order to derive the limiting distribution of the estimated LGPC, and finally show that we may replace $F_1,\ldots,F_p$ with their empirical counterparts $\hF_1,\ldots,\hF_p$ without changing these asymptotic results.
 
@@ -284,7 +284,7 @@ Let $\{\Z\}_n$ be observations on the marginally standard normally distributed r
 
 Then, by letting $b_n^2$ (assuming identical convergence rates) mean the product $b_{nj}b_{nk}$ corresponding to the pairs of variables defining the components in $\frho$, -->
 \begin{equation}
-\sqrt{nb_n^2}\left(\hfrho(\z) - \frho_0(\z)\right) \stackrel{d}{\rightarrow} \mathcal{N}(\bm{0}, \fLambda),
+\sqrt{nb^2}\left(\hfrho(\z) - \frho_0(\z)\right) \stackrel{d}{\rightarrow} \mathcal{N}(\bm{0}, \fLambda),
 \label{eq:ot2018}
 \end{equation}
 <!--
@@ -306,7 +306,7 @@ For a proof, we refer to @otneim2017conditional.--> where the asymptotic covaria
 We can now calculate the limiting distribution of the LGPC by means of the delta method. Denote by $g: \mathbb{R}^{p(p-1)/2} \rightarrow \mathbb{R}$ the translation \@ref(eq:definition) from the vector of local correlations between the components in $\Z$ (or, equivalently, $\X$) to the local partial correlation $\alpha(\z)$ between $Z_1$ and $Z_2$ given $Z_3, \ldots, Z_p$. From the expression of our estimate \@ref(eq:estimate) we have that $\halpha(\z) = g(\hfrho(\z))$, so we use the delta method to see that 
 
 \begin{equation}
-\sqrt{nb_n^m}\left(\halpha(\z) - \alpha(\z)\right) \stackrel{d}{\rightarrow} \mathcal{N}\left(0, \nabla g(\frho)^T\fLambda\nabla g(\frho)\right),
+\sqrt{nb^m}\left(\halpha(\z) - \alpha(\z)\right) \stackrel{d}{\rightarrow} \mathcal{N}\left(0, \nabla g(\frho)^T\fLambda\nabla g(\frho)\right),
 (\#eq:limitlgpc)
 \end{equation}
 where $m$ is equal to 2 or 5, and $\fLambda$ is either equal to the leading term of $\Jb^{-1}\Mb(\Jb^{-1})^T$, or $\fLambda$ in \@ref(eq:ot2018), depending on whether we use the full trivariate locally Gaussian fit described in Section \@ref(chap:trivariate-full) or the sequentially pairwise simplification described in Section \@ref(chap:bivariate). In any case, it is only a matter of basic differentiation to work out an expression for $\nabla g(\cdot)$, and this task has been deferred to Section C of the online supplement in the case where $d_1 = d_2 = 1$.
