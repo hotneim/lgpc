@@ -1,0 +1,74 @@
+---
+title: ""
+output: pdf_document
+---
+
+\begin{center}
+\Large \textbf{Responses to comments made my the Associate Editor and the reviewer to the manuscript JBES-P-2019-0538.R1: "\textit{The locally Gaussian partial correlation}"}
+\end{center}
+
+# Responses to comments made by the Associate Editor
+
+The associate editor writes the following:
+
+*I have only one editorial comment: The authors should include a short abstract for and in the online supplement that explains each section briefly.*
+
+**Our response:** We have added a paragraph in the beginning of the supplement detailing the contents of all the sections in the document.
+
+
+# Responses to comments made by Referee 2. 
+
+We are very grateful to the reviewer for reading our revised manuscript so carefully once again. Her are our point-by-point responses to the comments:
+
+\begin{itemize}
+
+\item[1.] \textit{It seems to me that it is better to replace $v$ in Equation (4) by $x$ instead. Otherwise, when $f_x$ itself is a Gaussian density, it is hard to simply reduce $\psi(x,v)$ to $f_x(x)$. This is also in line with the expression in Equation (6).}
+
+\textbf{Our response:} Thank you, has been done. We have also added a small comment just before eq. (4) in order to make this notation clear.
+
+\item[2.] \textit{The authors need to change $\widehat{Z}_j$ in page 6 to be consistent with the one in Equation (12) in page 11, because the estimated version can only be defined as $Phi^{-1}\left(\widehat F_j(X_{jt})\right)$ for each component $j = 1,\ldots,p$. Also please make the notation consistent, using either $X_{j,t}$ or $X_{jt}$ . There are other notation issues across the main text and the supplemental material, with some listed below.}
+
+\textbf{Our response:} Thank you for noticing this detail. Has been fixed. We have also searched the document for other occurrences of this \textit{particular} error, but could not find any. 
+
+\item[3.] \textit{Make notations like $f_{z_1|z_3}$ and $f_{Z_1|Z_3}$ consistent in page 9. In Equation (10), the definition of $\mu_{1|3}$ depends on both $z_1$ and $z_3$ , so it is better defined as $\mu_{1|3}(z_1,z_3)$. Similarly, $\sigma_{1|3}(z_1,z_3)$ should be used and $\Sigma_{Z_1|Z_3}$ should be replaced by $\Sigma_{Z_1|Z_3}(z_1,z_3)$ in Equation (10). In addition, I do not see the product of $f_{z_1|z_3}$ and $f_{z_2|z_3}$ (with their expressions given by Equation (10) and alike) leads directly to the expression below Equation (10). Pls double-check.}
+
+\textbf{Our response:} Thank you, we have updated the notation according to your comment. The expression below eq. (10) follows directly from the definition of conditional independence in terms of density functions. Two variables are conditionally independent given a third variable if and only if their corresponding \textit{joint} conditional density given the third variable is equal to the product of their corresponding \textit{marginal} conditional densities given the third variable. We have made this clear by adding "\textit{by definition}" just before the expression.
+
+\item[4.] \textit{Make Equation (13) consistent with Equation (7).}
+
+\textbf{Our response:} Has been done.
+
+\item[5.] \textit{Is it beneficial to exploit the symmetric structure in Equation (17) in Section 3.1.2, say considering only the cases of $j<k$?}
+
+\textbf{Our response:} That is certainly possible. However, we prefer to keep eq. (17) in its current form.
+
+\item[6.] \textit{I’m afraid that in page 13 replacing Equation (18) by Equation (A.13) (defined in page 42) helps understand better the optimization problem for the pairwise case than described in Equation (18).}
+
+\textbf{Our response:} We agree, and we have written eq. (18) in the same way as eq. (A.13) in the Appendix.
+
+\item[7.] \textit{I would suggest the authors to unify the notations in Equation (19) and below, because $u(\cdot,\rho_b)$ and $u(\cdot,R_b)$ (or $\psi(\cdot,\rho_b)$ and $\psi(\cdot,R_b)$) are used as equivalent expressions. Although I understand that they could serve the purpose, $u(\cdot,\rho_b)$ and $\psi(\cdot,R_b)$ should be reserved for the case of general dimensions.}
+
+\textbf{Our response:} Thank you for pointing this out. We have changed the notation in eq. 19 and the following paragraph so that it is in line with Theorem 3.1.
+
+\item[8.] \textit{Make Equation (20) consistent with Equations (21) and (22); i.e, deciding to add the argument $z$ or not.}
+
+\textbf{Our response:} We have added the argument $z$ to eq. (20).
+
+\item[9.] \textit{The authors stress one desirable property of LGPC being able to distinguish between positive and negative conditional dependence. I cannot find too much discussion in Section 4 about this property, which could be viewed as a nice empirical device in contrast to the conventional Granger causality testing procedure that fails to say anything about the potentially asymmetric pattern of the underlying problem.}
+
+\textbf{Our response:} This is a good point indeed. We have added a comment about this in the paragraph following eq. (25).
+
+\item[10.] \textit{In Section 5.3, what is the exact form of function $h(x)$ as given in Equation (28), say the standard $h(x) = x^2$?}
+
+\textbf{Our response:} We point out just after eq. (28) that we use $h(x) = x^2$ in all our examples.
+
+\item[11.] \textit{The online supplement contains a detailed analysis and is very useful. I appreciate your efforts very much. Equation (A.14) is defined for the minimization problem, but Equation (A.13) is define for the maximization problem. Pls change Equation (A.14) accordingly as in the subsequent theoretical analysis including the assumptions it is about maximization problem.}
+
+\textbf{Our response:} Thank you for reading this long appendix. We have rephrased eq. (A.14) to be a maximization problem in accordance with (A.13).
+
+\item[12.] \textit{In the second parts of both Theorem F.2 and Theorem F.3, they do not involve any bias terms that typically diverge to infinity as $n \to \infty$ and $b \to 0$; i.e., $T_b$ can be simply replaced by $T$ under the condition of $n \to \infty$ and $b \to 0$. This may seem to be a bit surprising to me given the popular $L_2$ form of the proposed test statistic in Equation (28). Is it because of the particular bandwidth condition imposed in Assumption 3 in Theorem 3.1? Is it somewhat undersmoothing to take care of the potential bias terms?}
+
+\textbf{Our response:} You are correct. This is a consequence of such a bandwidth condition, and we have added a comment pointing this out just before Theorem F.2.
+\end{itemize}
+
+

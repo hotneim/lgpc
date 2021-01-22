@@ -167,8 +167,10 @@
 \begin{document}
 \maketitle
 
-\hypertarget{the-multivariate-lgpc}{%
-\section{THE MULTIVARIATE LGPC}\label{the-multivariate-lgpc}}
+This supplement accompanies the article entitled \emph{The Locally Gaussian Partial Correlation}, and contains several technical derivations and discussions. In Section \ref{multi} we write out the details of the multivariate version of the LGPC. Section \ref{app-loccor} contains details regarding the proof of Theorem 3.1 in the main article. In Section \ref{app-asvar} we include some calulations needed to obtain exolicit expressions of the asymptotic variance of the LGPC. Section \ref{proofpseudo} contains a proof of Theorem 3.2, and in Section \ref{validity-bootstrap} we present conditions for the validity of the bootstrap when estimating the LGPC. Sections \ref{asym-test} and \ref{chap:pitman} present asymptotic theory for the test statistic in the test for conditional independence, while Sections \ref{boot-test} and \ref{local-boot} contain various details about bootstrapping the test statistic. In Section \ref{examples} we include two additional examples -- one simulated and one using real data. Finally, in Section \ref{power}, we present an extension of the power study found in the main article.
+
+\hypertarget{multi}{%
+\section{THE MULTIVARIATE LGPC}\label{multi}}
 
 \hypertarget{definition}{%
 \subsection{Definition}\label{definition}}
@@ -358,10 +360,10 @@ L_{n,b}(\Z_{in}, \Z_{jn}; \rho_b(z_i, z_j)) &= \frac{1}{n}\sum_{t=1}^n K_b(Z_{i,
 & \qquad\qquad\qquad - \int K_b(v-z_i, w- z_j)\psi(v,w;\rho_b(z_i, z_j)) \, \di v \di w,
 \label{eq:loglikelihood}
 \end{align}
-where \(\Z_{in} = (Z_{i,1}, Z_{i,2}, \ldots, Z_{i,n})\) and \(\Z_{jn} = (Z_{j,1}, Z_{j,2}, \ldots, Z_{j,n})\) are the \(\Z\)-vectors for components \(i\) and \(j\) respectively, \(n\) is the number of observations, \(z_i, z_j, v, w \in \mathbb{R}\), \(\rho_b = \rho_{ij,b}(z_i,z_j)\) is the local Gaussian correlation parameter, \(K_b(v-z_i, w-z_j) = (b_1b_2)^{-1}K(b_1^{-1}(v-z_i))K(b_2^{-1}(w-z_j))\) is a product kernel with bandwidth \(b=b_n=(b_1,b_2) = (b_{1n}, b_{2n})\), and \(K\) is an non-negative kernel function with compact support such that \(\int K(v,w) = 1\). For a fixed bandwidth \(b\), \(\rho_{0,b}\) is the true local parameter, that is, the minimizer of the local penalty function
+where \(\Z_{in} = (Z_{i,1}, Z_{i,2}, \ldots, Z_{i,n})\) and \(\Z_{jn} = (Z_{j,1}, Z_{j,2}, \ldots, Z_{j,n})\) are the \(\Z\)-vectors for components \(i\) and \(j\) respectively, \(n\) is the number of observations, \(z_i, z_j, v, w \in \mathbb{R}\), \(\rho_b = \rho_{ij,b}(z_i,z_j)\) is the local Gaussian correlation parameter, \(K_b(v-z_i, w-z_j) = (b_1b_2)^{-1}K(b_1^{-1}(v-z_i))K(b_2^{-1}(w-z_j))\) is a product kernel with bandwidth \(b=b_n=(b_1,b_2) = (b_{1n}, b_{2n})\), and \(K\) is an non-negative kernel function with compact support such that \(\int K(v,w) = 1\). For a fixed bandwidth \(b\), \(\rho_{0,b}\) is the true local parameter, that is, the maximizer of the local penalty function
 
 \begin{equation}
-\int K_b(v-z_i, w-z_j)\big[\psi(v,w; \rho_b(z_i, z_j)) - \log(\psi(v,w; \rho_b(z_i, z_j)))f(v,w)\big] \di v \di w,
+\int K_b(v-z_i, w-z_j)\big[\log(\psi(v,w; \rho_b(z_i, z_j)))f(v,w) - \psi(v,w; \rho_b(z_i, z_j))\big] \di v \di w,
 \label{eq:penalty}
 \end{equation}
 where \(f\) is the density function of \((Z_i, Z_j)\). Note in particular that \(\rho_{0,b} \rightarrow \rho_0\) as \(b\rightarrow0\), which is the true local correlation parameter. The reader may consult Tjøstheim and Hufthammer (\protect\hyperlink{ref-tjostheim2013local}{2013}) for more details and regularity conditions in this regard. The corresponding estimate \(\widehat \rho = \rho_{n, b}(z_i,z_j)\) is obtained by maximizing the log-likelihood in \eqref{eq:loglikelihood}. Note that, writing \(\rho\) for \(\rho_b\),
@@ -595,8 +597,8 @@ $$
 
 Let \(\M_{ij}\) and \(\J_{ij}\) be as in the proof of Corollary \ref{cor:E4} for a fixed \(\rho_{ij}\). Note that in the one-parameter case of \(\rho_{ij}\) in Corollary \ref{cor:E4}, to first order the covariance matrix \(\fLambda\) is a diagonal matrix having ordered values of \(M_{ij}/J_{ij}^2\) along the diagonal. This can be seen using the methods of proofs of Theorem 2 of Otneim and Tjøstheim (\protect\hyperlink{ref-otneim2017locally}{2017}) and Theorem 2 Otneim and Tjøstheim (\protect\hyperlink{ref-otneim2017conditional}{2018}). Note also that the 3-coordinate case of alternative (i) can be stated and proved in the same way, but a different scaling factor is required to avoid a singular covariance matrix as seen in the proof of Theorem 3.1 in the main article. The 3-coordinate case is in fact closer to the situation in Lacal and Tjøstheim (\protect\hyperlink{ref-lacal2018estimating}{2019}).
 
-\hypertarget{asymptotic-theory-for-the-test-statistic}{%
-\section{ASYMPTOTIC THEORY FOR THE TEST STATISTIC}\label{asymptotic-theory-for-the-test-statistic}}
+\hypertarget{asym-test}{%
+\section{ASYMPTOTIC THEORY FOR THE TEST STATISTIC}\label{asym-test}}
 
 Consider the general case \(\Z = (\Z_1, \Z_2, \Z_3)\) where each component is \(d_i\)-dimensional correspondingly, with \(i = 1,2,3\), and \(\Z\), naturally, is \(d_1+d_2+d_3\)-dimensional, and consider also the local partial correlation matrix of \((\Z_1,\Z_2|\Z_3)\). In alternative (iii), where \(d_3 = 1\), in Section \ref{chap:estimation} this matrix is given by equation \eqref{eq:offdiag3} with
 \[
@@ -628,7 +630,7 @@ Let the conditions of Theorem \ref{thm:A1} be fulfilled. Then $T_{n,b} \buildrel
 
 It is more difficult to obtain the limiting distribution. We will follow the technique in the proof of Theorem 3.2 in Lacal and Tjøstheim (\protect\hyperlink{ref-lacal2018estimating}{2019}). See also Joe (\protect\hyperlink{ref-joe1989estimation}{1989}). The details are a bit more involved in the present case because of the larger dimension and because we need to involve the pairwise log likelihood in the procedure.
 
-The results on asymptotic distribution can be proved on several levels. We consider two cases: a) the pairwise simplification where involving the estimates \(\rho_{ij,n,b}(z_i,z_j)\) for all possible pairs \((i,j)\) of the \(\frho\) vector, and b) the case where \(d_1=d_2=d_3=1\), but where \(\rho_{ij} = \rho_{ij}(\z)\) is allowed to depend on all three coordinates \(\z=(z_1,z_2,z_3)\). We will put the emphasis on a) and only comment briefly on b).
+The results on asymptotic distribution can be proved on several levels. We consider two cases: a) the pairwise simplification where involving the estimates \(\rho_{ij,n,b}(z_i,z_j)\) for all possible pairs \((i,j)\) of the \(\frho\) vector, and b) the case where \(d_1=d_2=d_3=1\), but where \(\rho_{ij} = \rho_{ij}(\z)\) is allowed to depend on all three coordinates \(\z=(z_1,z_2,z_3)\). We will put the emphasis on a) and only comment briefly on b). Following Lacal and Tjøstheim (\protect\hyperlink{ref-lacal2018estimating}{2018}) we neglect the asymptotic bias in the asymptotic expressions in Theorems F.2 and F.3. We are then implicitly assuming a suitable bandwidth condition as in Assumption 3 in Theorem 3.1. Deriving explicit expressions for the bias under general circumstances remanins to be worked out.
 
 \begin{thm} 
 Let the assumptions A, D--F of Theorem 3 of Otneim and Tjøstheim (\protect\hyperlink{ref-otneim2017conditional}{2018}) and the conditions of Theorem 3.2 of Lacal and Tjøstheim (\protect\hyperlink{ref-lacal2018estimating}{2018}) (which includes conditions A1 and A2 of this supplement) be fulfilled. Then,
@@ -819,8 +821,8 @@ We conclude that the testing procedure can pick up alternatives that converges a
 
 For a further brief discussion, see the paragraph following eqs. (27) and (28) in Section 5.2 in the main article.
 
-\hypertarget{bootstrapping-the-test-statistic}{%
-\section{BOOTSTRAPPING THE TEST STATISTIC}\label{bootstrapping-the-test-statistic}}
+\hypertarget{boot-test}{%
+\section{BOOTSTRAPPING THE TEST STATISTIC}\label{boot-test}}
 
 The main principle of this section is that we replace \(F_n\)-quantities with \(F_n^{*}\)-quantities and \(F\)-quantities with \(F_n\)-quantities, the latter being known under the bootstrap operation. Let
 \[T_{n,b}^* = \int_S h(\frho_{b,n}^*(\z))\di F_n^*(\z).\]
@@ -924,8 +926,8 @@ with $F_n^{s,t}(\z,\fu)$ being the empirical joint cumulative distribution funct
 \label{thm:H2}
 \end{thm}
 
-\hypertarget{the-local-bootstrap}{%
-\section{THE LOCAL BOOTSTRAP}\label{the-local-bootstrap}}
+\hypertarget{local-boot}{%
+\section{THE LOCAL BOOTSTRAP}\label{local-boot}}
 
 The limiting results for \(\alpha_n(\z)\) (or \({\falpha_n}(\z)\) in the matrix case) and \(T_{n,b}\), and the corresponding bootstrap results can be used to construct asymptotic and bootstrap confidence intervals of \(T_b\) and \(T\). In that sense they give an indication of whether \(\alpha(\z) = 0\) locally or \(\alpha(\z) \equiv 0\) globally respectively. Such confidence intervals, however, cannot in general be used to test for \(\alpha(z) \equiv 0\), i.e.~conditional independence, with a given level of the test. To be able to do that one must device a test statistic that is constructed with a probability structure as under the null hypothesis of conditional independence. It is difficult to obtain such a test based on asymptotic arguments: As mentioned before the asymptotic distribution of test functionals such as \(T_{n,b}\) is known to be inaccurate except for extremely large sample sizes. It is also difficult to build the probability null structure into the scaling factor of \(T_{n,b}\) since this would amount to building into that structure certain relationships between pairwise local correlations.
 
@@ -946,8 +948,8 @@ Once a bootstrap realization \(\{\Z_{1,t}^*,\Z_{2,t}^*,\Z_{3,t}^*\}\) is created
 
 In the \(\{\Z_{1,t}^*,\Z_{2,t}^*,\Z_{3,t}^*\}\)-framework we obtain an estimate \(\hfrho^*\) of the local Gaussian correlation vector conditional on the bootstrap realizations. An asymptotic theory of this estimate can now be established using the method of proof in Theorem 2 in Otneim and Tjøstheim (\protect\hyperlink{ref-otneim2017locally}{2017}), and subsequently an asymptotic theory for the test statistic \(T_n^*\) using the method of proof in Theorem 4.4 in Lacal and Tjøstheim (\protect\hyperlink{ref-lacal2017local}{2017}) and Theorem D.4 in Lacal and Tjøstheim (\protect\hyperlink{ref-lacal2018estimating}{2019}). See also the formulation of such proofs in the present paper, theorems \ref{thm:H1} and \ref{thm:H2}. The scaling factor \(C_n(A_b)\) is of the same type as in the formulation of those results with obvious notational changes. Moreover under the present null hypotheses \(T = 0\), it may be conjectured that it leads to the asymptotic results that the scaled \(T_n^* \buildrel {d_{P^*_{\omega}}} \over {\to} {\cal N}(0,1)\mbox{prob}-\mathbb{P}\).
 
-\hypertarget{two-additional-examples-of-estimation}{%
-\section{TWO ADDITIONAL EXAMPLES OF ESTIMATION}\label{two-additional-examples-of-estimation}}
+\hypertarget{examples}{%
+\section{TWO ADDITIONAL EXAMPLES OF ESTIMATION}\label{examples}}
 
 We will in this section provide two more demonstrations on how the estimated LGPC can be used to reveal nonlinear departures from conditional independence and to measure that conditional dependence. The ordinary partial correlation coefficient fully characterizes conditional dependence between jointly Gaussian variables. It is not hard, though, to construct examples in which strong nonlinear relationships remain completely undetected by the partial correlation. Consider the following structural equation;
 
@@ -995,8 +997,8 @@ The differences between Figures \ref{fig:realplots1} and \ref{fig:realplots2} ar
 
 The \(p\)-values for tests of the hypothesis \eqref{eq:grangernull500} and its opposite counterpart, using our new test for conditional independence as presented in the next section and with \(c\)-values for the bandwidth as chosen there, are both equal to 0.
 
-\hypertarget{power-studies}{%
-\section{POWER STUDIES}\label{power-studies}}
+\hypertarget{power}{%
+\section{POWER STUDIES}\label{power}}
 
 Table 2\(^*\) below is the extended version of Table 2 in the main article, sample size is \(n=100\):
 
