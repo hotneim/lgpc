@@ -134,7 +134,7 @@ and where the latter expression is defined analogously to \@ref(eq:matrixlocalpa
 
 \begin{align*}
 f_{Z_1,Z_2|\Z_3}(z_1, z_2|\z_3) &= f_{Z_1|\Z_3}(z_1|\z_3)f_{Z_2|\Z_3}(z_2|\z_3) \\
-&= \frac{1}{2\pi\sqrt{1-\sigma_{1|3}(z_1, \z_3)}\sqrt{1-\sigma_{2|3}(z_2, \z_3)}} \\ 
+&= \frac{1}{2\pi\sqrt{\sigma_{1|3}(z_1, \z_3)\sigma_{2|3}(z_2, \z_3)}} \\ 
 &\qquad \qquad \times\exp\left\{-\frac{1}{2}\left(\frac{z_1 - \mu_{1|3}(z_1, \z_3)}{\sigma_{1|3}(z_1, \z_3)}\right)^2\right\}\exp\left\{-\frac{1}{2}\left(\frac{z_2 - \mu_{2|3}(z_2, \z_3)}{\sigma_{2|3}(z_2, \z_3)}\right)^2\right\},
 \end{align*}
 and we at once identify the conditional density of $(Z_1,Z_2)|\Z_3$ as another Gaussian distribution, but without any cross-term involving $z_1z_2$, which then implies that the off-diagonal element in the partial covariance matrix \@ref(eq:matrixlocalpartial) is identically equal to zero. We see immediately from our definition \@ref(eq:definition) that the LGPC is also identically equal to zero.

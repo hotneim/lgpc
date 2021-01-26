@@ -32,7 +32,7 @@ We are very grateful to the reviewer for reading our revised manuscript so caref
 
 \item[3.] \textit{Make notations like $f_{z_1|z_3}$ and $f_{Z_1|Z_3}$ consistent in page 9. In Equation (10), the definition of $\mu_{1|3}$ depends on both $z_1$ and $z_3$ , so it is better defined as $\mu_{1|3}(z_1,z_3)$. Similarly, $\sigma_{1|3}(z_1,z_3)$ should be used and $\Sigma_{Z_1|Z_3}$ should be replaced by $\Sigma_{Z_1|Z_3}(z_1,z_3)$ in Equation (10). In addition, I do not see the product of $f_{z_1|z_3}$ and $f_{z_2|z_3}$ (with their expressions given by Equation (10) and alike) leads directly to the expression below Equation (10). Pls double-check.}
 
-\textbf{Our response:} Thank you, we have updated the notation according to your comment. The expression below eq. (10) follows directly from the definition of conditional independence in terms of density functions. Two variables are conditionally independent given a third variable if and only if their corresponding \textit{joint} conditional density given the third variable is equal to the product of their corresponding \textit{marginal} conditional densities given the third variable. We have made this clear by adding "\textit{by definition}" just before the expression.
+\textbf{Our response:} Thank you, we have updated the notation according to your comment. The expression below eq. (10) contained an error under each of the square root signs which has been corrected.
 
 \item[4.] \textit{Make Equation (13) consistent with Equation (7).}
 
