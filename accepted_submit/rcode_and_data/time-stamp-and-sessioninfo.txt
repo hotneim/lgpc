@@ -1,0 +1,30 @@
+The rcode.R-script producing all figures in the paper was run on
+
+2020-09-10 08:03:42
+
+Output from sessionInfo():R version 3.6.3 (2020-02-29)
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+Running under: Windows 10 x64 (build 18362)
+
+Matrix products: default
+
+locale:
+[1] LC_COLLATE=Norwegian Bokmål_Norway.1252  LC_CTYPE=Norwegian Bokmål_Norway.1252    LC_MONETARY=Norwegian Bokmål_Norway.1252
+[4] LC_NUMERIC=C                             LC_TIME=Norwegian Bokmål_Norway.1252    
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] tseries_0.10-47 readxl_1.3.1    tidyr_1.1.2     lubridate_1.7.4 readr_1.3.1     ggplot2_3.3.0   dplyr_1.0.2    
+[8] mvtnorm_1.1-0   lg_0.4.1       
+
+loaded via a namespace (and not attached):
+ [1] Rcpp_1.0.4.6       pillar_1.4.4       compiler_3.6.3     cellranger_1.1.0   ks_1.11.7          xts_0.12-0        
+ [7] tools_3.6.3        digest_0.6.25      mclust_5.4.6       lifecycle_0.2.0    tibble_3.0.3       gtable_0.3.0      
+[13] lattice_0.20-38    pkgconfig_2.0.3    rlang_0.4.7        Matrix_1.2-18      rstudioapi_0.11    curl_4.3          
+[19] withr_2.2.0        stringr_1.4.0      generics_0.0.2     vctrs_0.3.4        hms_0.5.3          grid_3.6.3        
+[25] tidyselect_1.1.0   glue_1.4.2         R6_2.4.1           farver_2.0.3       TTR_0.23-6         purrr_0.3.3       
+[31] magrittr_1.5       scales_1.1.0       ellipsis_0.3.0     quantmod_0.4.17    logspline_2.1.15   colorspace_1.4-1  
+[37] labeling_0.3       quadprog_1.5-8     KernSmooth_2.23-16 stringi_1.4.6      munsell_0.5.0      crayon_1.3.4      
+[43] zoo_1.8-8         
