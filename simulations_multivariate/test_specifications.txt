@@ -1,0 +1,5 @@
+test_number     test_name     estimation_method      bw_method      joint_c     transform     n     bootstrap_rep
+1               "test1"       "1par"                 "plugin"             1.75          1   100               500
+2               "test2"       "1par"                 "plugin"             1.75          1   200               500
+
+

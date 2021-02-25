@@ -2,3 +2,9 @@
 .Rhistory
 *.bak
 *.sav
+accepted*/*
+referee*/*
+responses*/*
+trans*/*
+*blinded*
+revision_DAG*
