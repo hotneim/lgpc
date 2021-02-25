@@ -2,6 +2,7 @@
 .Rhistory
 *.bak
 *.sav
+transfer/*
 accepted*/*
 referee*/*
 responses*/*
